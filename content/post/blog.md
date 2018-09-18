@@ -120,8 +120,7 @@ cd $GOPATH/src/github.com/$YOURUSERNAME/$YOURREPO    \\Please replace $YOURUSERN
 mkdir docs    \\This folder will be used by Github Page
 hugo -d ./docs    \\This will generate all static files to "docs" directory for your website.
 git add -A
-git add -u .
-git commit -m "$UPDATE"    \\Please replace $UPDATE with any words for this update.
+git commit -a -m "$UPDATE"    \\Please replace $UPDATE with any words for this update.
 git push origin master
 ```
 You will see the changes on your Github repo.
