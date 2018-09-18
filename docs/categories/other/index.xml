@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Other on Fred&#39;s blog</title>
+    <link>https://haroldwo.github.io/abablog/categories/other/</link>
+    <description>Recent content in Other on Fred&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 18 Sep 2018 12:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://haroldwo.github.io/abablog/categories/other/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Let&#39;s make our own blogs.</title>
+      <link>https://haroldwo.github.io/abablog/post/blog/</link>
+      <pubDate>Tue, 18 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/blog/</guid>
+      <description>1. Blog. Nowadays, when we want to create a blog website, we don&amp;rsquo;t need to write so much codes of front end, back-end or even set up resources for the website. Thanks to our Open source community. At all times, we can use many blog engines for setting our own blogs, which is a very convenient way to make it done. This article will show you some basic process to complete this task.</description>
+    </item>
+    
+  </channel>
+</rss>

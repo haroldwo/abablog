@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://haroldwo.github.io/abablog/post/blog/</loc>
+    <lastmod>2018-09-18T12:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://haroldwo.github.io/abablog/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://haroldwo.github.io/abablog/</loc>
+    <lastmod>2018-09-18T12:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://haroldwo.github.io/abablog/tags/hugo/</loc>
+    <lastmod>2018-09-18T12:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://haroldwo.github.io/abablog/categories/other/</loc>
+    <lastmod>2018-09-18T12:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://haroldwo.github.io/abablog/post/</loc>
+    <lastmod>2018-09-18T12:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://haroldwo.github.io/abablog/tags/</loc>
+    <lastmod>2018-09-18T12:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
