@@ -3,7 +3,7 @@ staticDir = ["static", "../../static"]
 baseurl = "https://haroldwo.github.io/"
 languageCode = "en-us"
 title = "Fred's blog"
-theme = "hugo-strata-theme"
+theme = "strata"
 disqusShortname = "haroldwo"
 # Enable Google Analytics by inserting your tracking code
 googleAnalytics = ""
