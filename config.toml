@@ -1,6 +1,6 @@
 staticDir = ["static", "../../static"]
 
-baseurl = "https://haroldwo.github.io/"
+baseurl = "https://haroldwo.github.io/abablog/"
 languageCode = "en-us"
 title = "Fred's blog"
 theme = "strata"
