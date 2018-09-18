@@ -107,7 +107,7 @@ paginate = 10
 		content = "Please drop me an email or message if you have any questions of my articles."
 
 		# This can be exact coordinates or a searchable address in google maps
-		gmaps_address = "39.7889055,-120.5443524"
+		#gmaps_address = "39.7889055,-120.5443524"
 		address = [
 			"Shanghai",
 			"China"
