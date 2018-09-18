@@ -10,3 +10,9 @@ author: "Fred"
 ---
 
 ### 1. CI.
+
+
+
+
+
+![blog01.png](https://i.postimg.cc/XNHvRJTh/blog01.png)

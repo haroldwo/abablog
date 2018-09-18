@@ -129,8 +129,8 @@ git push origin master
 
 **Please find Github Page options under the settings tab of your repo. Select "master branch /docs folder" in the "Source" block. Then click "Save". After a while, you will see the message "Your site is published at https://xx.github.io/xx/". Now, you can follow the URL with you browser to see your website.**
 
-[![blog01.png](https://i.postimg.cc/XNHvRJTh/blog01.png)](https://postimg.cc/fkdZXwWj)
+![blog01.png](https://i.postimg.cc/XNHvRJTh/blog01.png)
 
-[![blog02.png](https://i.postimg.cc/Ls2RYKcL/blog02.png)](https://postimg.cc/qNbWSYMv)
+![blog02.png](https://i.postimg.cc/Ls2RYKcL/blog02.png)
 
 **At the next time you update your blogs, please refer to 5th, 6th and 7th part of this article. Thank you for your reading.**
