@@ -5,33 +5,32 @@ weight: 100
 keywords: ["blog","Hugo"]
 description: "Make a blog website."
 tags: ["Hugo"]
-categories: ["other"]
+categories: ["Other"]
 author: "Fred"
 banner: ""
-menu: ""
 ---
 
 ### 1. Blog.
 
-**Nowadays, when we want to create a blog website, we don't need to write so much codes of front end, back-end or even set up resources for the website. Thanks to our Open source community. At all times, we can use many blog engines for setting our own blogs, which is a very convenient way to make it done. This article will show you some basic process to complete this task.**
+**Nowadays, we don't have to write so much codes of front end, back-end or even set up resources for building a blog website. Thanks to our Open Source community, we can use many blog engines for setting our own blogs at all times, which is a very convenient way to make it done. This article will show you a basic process to complete this task.**
 
-**There are several engines you can use for your blog such as Jekyll, Octopress, Hexo and so on. Please google it. All of them are awesome and easy to use. Choose the one you prefer. Here, we will use a engine named Hugo for example which is a world-famous web framework and a static site generator written in Go.**
+**There are several engines you can use for your blog such as Jekyll, Octopress, Hexo and so on. Please google it. All of them are awesome and easy to use. Choose the one you prefer. Here, we will use a engine named Hugo for an example, which is a world-famous web framework and a static site generator written in Go.**
 
-***Notice: There are some other ways to set up blog website such that use wordpress docker and deploy it on the Cloud or just buy the Cloud static site service. Furthermore, there are many social websites which can help you to set your own blog site with your domain. The way this article will offer is interesting but not easy. However, it is for free.***
+***Notice: There are some other ways to set up blog website such that use wordpress docker and deploy it on the Cloud or just buy the Cloud static site service. Furthermore, there are many social websites which can help you to set your own blog site with your domain. The way this article will offer is interesting but not simple. Additionally, it is for free.***
 
 ### 2. Preparation.
 
 **2.1 Become a github user.**
 
-**How to get it? Please refer to [Github Bootcamp](https://help.github.com/categories/bootcamp/) and [Github Setup](https://help.github.com/categories/setup/)**
+**How to get it? Please read and try [Github Bootcamp](https://help.github.com/categories/bootcamp/) and [Github Setup](https://help.github.com/categories/setup/)**
 
-**2.2 Choose a Markdown editor**
+**2.2 Choose a Markdown editor.**
 
-**This is for editing your blog. Please google it and choose one. I recommand Atom here if you have no idea. How to get it? Please refer to [Atom](https://atom.io/)**
+**It is for editing your blog. Please google it and choose one of Markdown editors. I recommand Atom here if you have no idea. How to get it? Please look into [Atom](https://atom.io/).**
 
 ### 3. Engine installation.
 
-**Installation details please refer to [Hugo manual](https://gohugo.io/getting-started/installing/). If you use Ubuntu and golang environment, you can directly use my script.**
+**Installation details please see [Hugo manual](https://gohugo.io/getting-started/installing/). If you are using Ubuntu system and golang environment, you can directly use my script.**
 
 ```
 wget https://github.com/gohugoio/hugo/releases/download/v0.48/hugo_0.48_Linux-64bit.tar.gz -P ~
@@ -63,7 +62,7 @@ blog
 
 ### 4. Choose your favorite theme.
 
-**You can choose your favorite theme from [Hugo Themes](https://themes.gohugo.io/) and [Chinese Hugo](http://www.gohugo.org/theme/). Please read the user manual of your themes. Most of them are put on Github and very esay to use. Then, please create a repo($YOURREPO) for your blog site on your own github.**
+**You can choose your favorite theme from [Hugo Themes](https://themes.gohugo.io/) and [Chinese Hugo](http://www.gohugo.org/theme/). Please read the user manual of your themes carefully. Most of them are put on Github and very esay to use. Then, please create a repo($YOURREPO) for your blog site on your own Github.**
 
 **After repo creation, please follow my script to relate your local repo to Github repo.**
 
@@ -76,9 +75,9 @@ git submodule add https://github.com/$THEMEOWNER/$THEME.git themes/$THEME    \\P
 
 ### 5. Post your articles.
 
-**You can use `hugo new post/$YOURARTICLE` command to create your article files or directly create new files on the path "content/post" of your site. Please notice the file should named ending with ".md" such as "new.md" etc. which means using Markdown to format your articles. Open your Markdown editor to edit your articles. Markdown is easy to use. Please google it if you have no idea. In Atom, press `ctrl+alt+m` for markdown preview.**
+**You can use `hugo new post/$YOURARTICLE` command to create your article files or directly create new files on the relative path "content/post" of your site. Please notice the file should named ending with ".md" such as "new.md" etc. which means using Markdown to format your articles. Open your Markdown editor to edit your articles. Markdown is easy to use. Please google it if you have no idea about it. In Atom, press `ctrl+alt+m` for markdown preview.**
 
-**Below is the meta template in your article for your reference.**
+**Below is the meta info template of articles for your reference.**
 ```
 ---
 title: "Let's make our own blogs."
@@ -96,25 +95,28 @@ Here will be your article content.
 
 ### 6. Preview your website.
 
-**Please modify "config.toml" and other customized file we mentioned in 1.2 and then follow my script.**
+**Please modify "config.toml" and other customized file we mentioned in 1.2. Configure this info `baseurl = "https://$YOURUSERNAME.github.io/$YOURREPO/"` in your "config.toml" for mapping the domain of Github Page.**
 
 ***Notice: You need to add `staticDir = ["static", "../../static"]` in your "config.toml" if you add files in "static" directory.***
+
+**Well, let's go ahead.**
+
 ```
 cd $GOPATH/src/github.com/$YOURUSERNAME/$YOURREPO    \\Please replace $YOURUSERNAME and $YOURREPO mentioned before.
 hugo server    \\This will start a web service.
 ```
-**After that, you will see something like below.**
+**After that, you will see something as below.**
 ```
 Serving pages from memory
 Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Web Server is available at http://localhost:1313/xx/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 ```
-**Please open the URL(http://localhost:1313/) with your browser to check your website. If something wrong, please review the manual of your theme and your customized file again.**
+**Please open the URL(http://localhost:1313/xx/) with your browser to check your website. If something wrong, please review the manual of your theme and your customized file again.**
 
 ### 7. Publish it on Github Page.
 
-**Please follow below script to push repo to Github.**
+**Please follow the script to push repo to Github.**
 ```
 cd $GOPATH/src/github.com/$YOURUSERNAME/$YOURREPO    \\Please replace $YOURUSERNAME and $YOURREPO mentioned before.
 mkdir docs    \\This folder will be used by Github Page
@@ -125,6 +127,10 @@ git push origin master
 ```
 **You will see the changes on your Github repo.**
 
-**Please find Github Page options under the settings tab of your repo. Select "master branch /docs folder" in the "Source" block. Then click "Save". After a while, you will see the message "Your site is published at https://haroldwo.github.io/xx/". Now, you can follow the URL with you browser to see your website.**
+**Please find Github Page options under the settings tab of your repo. Select "master branch /docs folder" in the "Source" block. Then click "Save". After a while, you will see the message "Your site is published at https://xx.github.io/xx/". Now, you can follow the URL with you browser to see your website.**
 
-**At the next time you update your blogs, please redo 5th and 6th part of this article. Thank you for your reading.**
+![pic](../../static/images/article/blog01.PNG "blog01")
+
+![pic](../../static/images/article/blog02.PNG "blog02")
+
+**At the next time you update your blogs, please refer to 5th, 6th and 7th part of this article. Thank you for your reading.**
