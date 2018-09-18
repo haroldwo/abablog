@@ -114,7 +114,7 @@ Press Ctrl+C to stop
 
 ### 7. Publish it on Github Page.
 
-Please follow below script to push repo to Github.
+**Please follow below script to push repo to Github.**
 ```
 cd $GOPATH/src/github.com/$YOURUSERNAME/$YOURREPO    \\Please replace $YOURUSERNAME and $YOURREPO mentioned before.
 mkdir docs    \\This folder will be used by Github Page
@@ -123,6 +123,6 @@ git add -A
 git commit -a -m "$UPDATE"    \\Please replace $UPDATE with any words for this update.
 git push origin master
 ```
-You will see the changes on your Github repo.
+**You will see the changes on your Github repo.**
 
-Please find Github Page options under the settings tab of your repo. Select "master branch /docs folder" in the "Source" block. Then click "Save". After a while, you will see the message "Your site is published at https://haroldwo.github.io/xx/". Now, you can follow the URL with you browser to see your website.
+**Please find Github Page options under the settings tab of your repo. Select "master branch /docs folder" in the "Source" block. Then click "Save". After a while, you will see the message "Your site is published at https://haroldwo.github.io/xx/". Now, you can follow the URL with you browser to see your website.**
