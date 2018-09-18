@@ -126,3 +126,5 @@ git push origin master
 **You will see the changes on your Github repo.**
 
 **Please find Github Page options under the settings tab of your repo. Select "master branch /docs folder" in the "Source" block. Then click "Save". After a while, you will see the message "Your site is published at https://haroldwo.github.io/xx/". Now, you can follow the URL with you browser to see your website.**
+
+**At the next time you update your blogs, please redo 5th and 6th part of this article. Thank you for your reading.**
