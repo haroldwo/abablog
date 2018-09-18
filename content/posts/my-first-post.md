@@ -1,7 +1,12 @@
 ---
 title: "My First Post"
-date: 2018-09-17T18:54:06-07:00
-draft: true
+date: 2017-12-14T11:18:15+08:00
+weight: 70
+keywords: ["hugo"]
+description: "第一篇文章"
+tags: ["hugo", "pages"]
+categories: ["pages"]
+author: ""
 ---
 
-test
+这里是文章内容test
