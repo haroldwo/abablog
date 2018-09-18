@@ -6,7 +6,7 @@ git:
 install:
     - wget https://github.com/gohugoio/hugo/releases/download/v0.48/hugo_0.48_Linux-64bit.tar.gz
     - tar zxvf hugo_0.48_Linux-64bit.tar.gz
-script: ./hugo
+script: ./hugo -d ./docs
 deploy:
     provider: pages
     skip_cleanup: true
