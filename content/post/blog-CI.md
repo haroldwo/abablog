@@ -1,5 +1,5 @@
 ---
-title: "Make blog posting as a simple Continuous Delivery."
+title: "Make Blog Posting as a Simple Continuous Delivery."
 date: 2018-09-18T12:00:00+08:00
 weight: 90
 keywords: ["blog","Travis"]
@@ -75,6 +75,6 @@ You can customize the life cycle of your build. Please look into [Travis CI Docs
 
 ## 4. Trigger Travis CI
 
-Now, Travis CI will automatically build your code and update your repo every time you push your repo to Github. You will receive an email for the build info. You can also see the process log on the your Travis CI page.
+Now, Travis CI will automatically build your code and update your repo every time you push your repo to Github. You will receive an email for the build info. You can also see the process log on your Travis CI page.
 
 [![blog-_CI05.png](https://i.postimg.cc/rsRbGPJC/blog-_CI05.png)](https://postimg.cc/WqjXTSxh)

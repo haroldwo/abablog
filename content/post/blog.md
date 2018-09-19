@@ -1,5 +1,5 @@
 ---
-title: "Let's make our own blogs."
+title: "Let's Make Our Own Blogs."
 date: 2018-09-18T12:00:00+08:00
 weight: 100
 keywords: ["blog","Hugo"]
