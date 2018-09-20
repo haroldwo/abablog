@@ -1,7 +1,7 @@
 ---
 title: "Note of Justice with Michael Sandel."
 date: 2018-09-19T12:00:00+08:00
-weight: 80
+weight: 90
 keywords: ["blog","Thinking"]
 description: "Note of Justice with Michael Sandel."
 tags: ["Thinking"]

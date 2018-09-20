@@ -1,7 +1,7 @@
 ---
 title: "Make Blog Posting as a Simple Continuous Delivery."
 date: 2018-09-19T12:00:00+08:00
-weight: 90
+weight: 20
 keywords: ["blog","Travis"]
 description: "Make a simple CD."
 tags: ["Travis"]

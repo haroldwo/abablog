@@ -1,7 +1,7 @@
 ---
 title: "Let's Make Our Own Blogs."
 date: 2018-09-18T12:00:00+08:00
-weight: 100
+weight: 10
 keywords: ["blog","Hugo"]
 description: "Make a blog website."
 tags: ["Hugo"]
