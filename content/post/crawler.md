@@ -20,7 +20,7 @@ A crawler actually is a script which execute simulation of our action very fast 
 
 ## 2. Describe a crawler.
 
-Let's describe the crawler as a object. What attribute can a crawler own? These attributes will be used as parameter in our program. Let me see. Well, First of all, we need a target URL for visit. Then, we need set our HTTP head when we send request to the website. Also, there could be more than one link when we search something like picture so we need a array to store these links. Additionally, don't forget that it will be blocked by web server if it sends requests too frequently. We can set a interval for it. Now, Let's code. Please follow this mind to create a stronger crawler if you want.
+Let's describe the crawler as a object. What attribute can a crawler own? These attributes will be used as parameter in our program. Let me see. Well, First of all, we need a target URL for visit. Then, we need set our HTTP head when we send request to the website. Also, there could be more than one link when we search something like pictures so we need an array to store these links. Additionally, don't forget that the crawler will be blocked by a web server if it sends requests too frequently. We can set a interval for it. Now, Let's code. Please follow this mind to create a stronger crawler if you want.
 
 ```
 type Crawler struct {
@@ -35,7 +35,7 @@ type Crawler struct {
 	duration    time.Duration
 }
 ```
-In most of cases, we only need to change host and referer of HTTP head. So I just involve these two.
+In most of cases, we only need to change host and referer of HTTP head. So I just involved these two.
 
 ## 3. HTTP request -> Web
 
@@ -43,33 +43,33 @@ We use lib "github.com/PuerkitoBio/goquery" here for convenience. You can use re
 
 First one, We just catch data from a page.
 ```
-func (c Crawler) getDoc() (*goquery.Document, error) {
+func (c Crawler) getDoc() error {
 	res, err := http.Get(c.targetUrl)
 	if err != nil {
 		log.Fatal(err)
-		return nil, err
+		return err
 	}
 	defer res.Body.Close()
 	if res.StatusCode != 200 {
 		log.Fatalf("status code error: %d %s", res.StatusCode, res.Status)
-		return nil, errors.New(res.Status)
+		return errors.New(res.Status)
 	}
-	doc, err := goquery.NewDocumentFromReader(res.Body)
+	c.doc, err = goquery.NewDocumentFromReader(res.Body)
 	if err != nil {
 		log.Fatal(err)
-		return nil, err
+		return err
 	}
-	return doc, nil
+	return nil
 }
 ```
 
 Second one, we send different requests for further links.
 ```
-func (c Crawler) reqDoc() (*goquery.Document, error) {
+func (c Crawler) reqDoc() error {
 	req, err := http.NewRequest("GET", c.targetUrl, nil)
 	if err != nil {
 		log.Fatal(err)
-		return nil, err
+		return err
 	}
 	header := map[string]string{
 		"Host":                      c.headHost,
@@ -83,19 +83,19 @@ func (c Crawler) reqDoc() (*goquery.Document, error) {
 	for key, value := range header {
 		req.Header.Add(key, value)
 	}
-  client := &http.Client{}
+	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Fatal(err)
-		return nil, err
+		return err
 	}
 	defer resp.Body.Close()
-	doc, err := goquery.NewDocumentFromReader(resp.Body)
+	c.doc, err = goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
 		log.Fatal(err)
-		return nil, err
+		return err
 	}
-	return doc, nil
+	return nil
 }
 ```
 
@@ -118,12 +118,7 @@ func Duplicate(dirty interface{}) (clean []interface{}) {
 Then, Let's write a method that filter some info from the response.
 ```
 func (c Crawler) getContent() error {
-	doc, err := c.getDoc()
-	if err != nil {
-		log.Fatal(err)
-		return err
-	}
-	doc.Find(".content").Each(func(i int, s *goquery.Selection) {
+	c.doc.Find(".content").Each(func(i int, s *goquery.Selection) {
 		content := s.Find("a").Text()
 		c.contents = append(c.contents, content)
 	})
@@ -134,12 +129,7 @@ func (c Crawler) getContent() error {
 This is another example for filtering picture info.
 ```
 func (c Crawler) getPic() error {
-	doc, err := c.getDoc()
-	if err != nil {
-		log.Fatal(err)
-		return err
-	}
-	doc.Find("img").Each(func(i int, s *goquery.Selection) {
+	c.doc.Find("img").Each(func(i int, s *goquery.Selection) {
 		link, ok := s.Attr("src")
 		if ok {
 			c.contents = append(c.contents, link)
