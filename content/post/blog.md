@@ -35,10 +35,13 @@ Installation details please see [Hugo manual](https://gohugo.io/getting-started/
 ```
 wget https://github.com/gohugoio/hugo/releases/download/v0.48/hugo_0.48_Linux-64bit.tar.gz -P ~
 cd /usr/local/bin
-tar zxvf ~/hugo_0.48_Linux-64bit.tar.gz hugo    //We only need this binary file.
-mkdir -p $GOPATH/src/github.com/$YOUR_USERNAME    //Please replace $YOUR_USERNAME with your Github account.
+tar zxvf ~/hugo_0.48_Linux-64bit.tar.gz hugo
+// We only need this binary file.
+mkdir -p $GOPATH/src/github.com/$YOUR_USERNAME
+// Please replace $YOUR_USERNAME with your Github account.
 cd $GOPATH/src/github.com/$YOUR_USERNAME
-hugo new site $YOUR_REPO    //$YOUR_REPO will be your new Github repo.
+hugo new site $YOUR_REPO
+// $YOUR_REPO will be your new Github repo.
 ```
 Below is the directory structure of your site.
 ```
@@ -71,10 +74,15 @@ You can choose your favorite theme from [Hugo Themes](https://themes.gohugo.io/)
 After repo creation, please follow my script to relate your local repo to Github repo.
 
 ```
-cd $GOPATH/src/github.com/$YOUR_USERNAME/$YOUR_REPO    \\Please replace $YOUR_USERNAME and $YOUR_REPO mentioned before.
+cd $GOPATH/src/github.com/$YOUR_USERNAME/$YOUR_REPO
+\\ Please replace $YOUR_USERNAME and $YOUR_REPO mentioned before.
 git init
 git remote add origin https://github.com/$YOUR_USERNAME/$YOUR_REPO.git
-git submodule add https://github.com/$THEME_OWNER/$THEME.git themes/$THEME    \\Please replace $THEME_OWNER and $THEME with the info you find within your theme on the Github. For example, you found your theme under curttimson/hugo-theme-massively. Then you will input "git submodule add https://github.com/curttimson/hugo-theme-massively themes/hugo-theme-massively"
+git submodule add https://github.com/$THEME_OWNER/$THEME.git themes/$THEME
+\\ Please replace $THEME_OWNER and $THEME with the info you find within
+\\ your theme on the Github. For example, you found your theme under
+\\ curttimson/hugo-theme-massively. Then you will input "git submodule
+\\ add https://github.com/curttimson/hugo-theme-massively themes/hugo-theme-massively"
 ```
 
 ## 5. Post your articles.
@@ -104,8 +112,10 @@ Please modify "config.toml" and other customized file we mentioned in 1.2. Confi
 Well, let's go ahead.
 
 ```
-cd $GOPATH/src/github.com/$YOUR_USERNAME/$YOUR_REPO    \\Please replace $YOUR_USERNAME and $YOUR_REPO mentioned before.
-hugo server    \\This will start a web service.
+cd $GOPATH/src/github.com/$YOUR_USERNAME/$YOUR_REPO
+\\ Please replace $YOUR_USERNAME and $YOUR_REPO mentioned before.
+hugo server
+\\ This will start a web service.
 ```
 After that, you will see something as below.
 ```
@@ -120,11 +130,15 @@ Please open the URL(http://localhost:1313/xx/) with your browser to check your w
 
 Please follow the script to push repo to Github.
 ```
-cd $GOPATH/src/github.com/$YOUR_USERNAME/$YOUR_REPO    \\Please replace $YOUR_USERNAME and $YOUR_REPO mentioned before.
-mkdir docs    \\This folder will be used by Github Page
-hugo -d ./docs    \\This will generate all static files to "docs" directory for your website.
+cd $GOPATH/src/github.com/$YOUR_USERNAME/$YOUR_REPO
+\\ Please replace $YOUR_USERNAME and $YOUR_REPO mentioned before.
+mkdir docs
+\\ This folder will be used by Github Page
+hugo -d ./docs
+\\ This will generate all static files to "docs" directory for your website.
 git add -A
-git commit -a -m "$UPDATE"    \\Please replace $UPDATE with any words for this update.
+git commit -a -m "$UPDATE"
+\\ Please replace $UPDATE with any words for this update.
 git push origin master
 ```
 You will see the changes on your Github repo.
