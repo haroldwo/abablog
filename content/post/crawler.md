@@ -133,7 +133,7 @@ func (c *Crawler) getContent() error {
 
 This is another example for filtering picture info.
 ```
-func (c Crawler) getPic() error {
+func (c *Crawler) getPic() error {
 	doc, err := c.reqDoc()
 	if err != nil {
 		log.Fatal(err)
