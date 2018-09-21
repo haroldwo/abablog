@@ -20,7 +20,7 @@ A crawler actually is a script which execute simulation of our action very fast 
 
 ## 2. Describe a crawler.
 
-Let's describe the crawler as a object. What attribute can a crawler own? These attributes will be used as parameter in our program. Let me see. Well, First of all, I need a target URL for visit. Then, I need set my HTTP head when I send request to the website. Also, there could be more than one link when we search something like pictures so I need an array to store these links. Additionally, don't forget that the crawler will be blocked by a web server if it sends requests too frequently. We can set a interval for it. Now, Let's code. Please follow this mind to create a stronger crawler if you want.
+Let's describe the crawler as a object. What attribute can a crawler own? These attributes will be used as parameter in our program. Let me see. Well, First of all, I need a target URL for visit. Then, I need set my HTTP head when I send request to the website. Also, there could be more than one link when we search something like pictures so I need an array to store these links. Additionally, don't forget that the crawler will be blocked by a web server if it sends requests too frequently. We can set a optional interval mode for it. Ok, Let's code. Please follow this mind to create a stronger crawler if you want.
 
 ```
 type Crawler struct {
@@ -28,11 +28,16 @@ type Crawler struct {
 	headHost    string
 	headReferer string
 	dataDir     string
-	urls        []string
-	interval    *time.Ticker
-	startPoint  time.Time
-	end         time.Timer
-	duration    time.Duration
+	Contents    []string
+	Mode
+}
+
+type Mode struct {
+	name       string
+	interval   *time.Ticker
+	startPoint time.Time
+	end        time.Timer
+	duration   time.Duration
 }
 ```
 In most of cases, we only need to change host and referer of HTTP head. So I just involved these two.
