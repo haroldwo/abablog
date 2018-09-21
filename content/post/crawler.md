@@ -1,7 +1,7 @@
 ---
 title: "Write a Simple Crawler."
 date: 2018-09-20T12:00:00+08:00
-weight: 30
+weight: 10
 keywords: ["crawler","goquery"]
 description: "Write a Simple Crawler."
 tags: ["crawler","goquery"]
@@ -14,13 +14,13 @@ banner: ""
 
 #### HTTP request -> Web -> HTTP response -> Parse data -> Handle data
 
-This is the basic process of a crawler program. We will not talk about concurrency or distributed framework here. This article aim to give a simple introduction of crawler.
+This is the basic process of a crawler program. I will not talk about concurrency or distributed framework here. This article aim to give a simple introduction of crawler.
 
 A crawler actually is a script which execute simulation of our action very fast when we browse a web page and it follows some rules we designed for catching our data.
 
 ## 2. Describe a crawler.
 
-Let's describe the crawler as a object. What attribute can a crawler own? These attributes will be used as parameter in our program. Let me see. Well, First of all, we need a target URL for visit. Then, we need set our HTTP head when we send request to the website. Also, there could be more than one link when we search something like pictures so we need an array to store these links. Additionally, don't forget that the crawler will be blocked by a web server if it sends requests too frequently. We can set a interval for it. Now, Let's code. Please follow this mind to create a stronger crawler if you want.
+Let's describe the crawler as a object. What attribute can a crawler own? These attributes will be used as parameter in our program. Let me see. Well, First of all, I need a target URL for visit. Then, I need set my HTTP head when I send request to the website. Also, there could be more than one link when we search something like pictures so I need an array to store these links. Additionally, don't forget that the crawler will be blocked by a web server if it sends requests too frequently. We can set a interval for it. Now, Let's code. Please follow this mind to create a stronger crawler if you want.
 
 ```
 type Crawler struct {
@@ -39,37 +39,37 @@ In most of cases, we only need to change host and referer of HTTP head. So I jus
 
 ## 3. HTTP request -> Web
 
-We use lib "github.com/PuerkitoBio/goquery" here for convenience. You can use regexp instead of it for a more original way. Here, I wrote two methods.
+I use lib "github.com/PuerkitoBio/goquery" here for convenience. You can use regexp instead of it for a more original way. Here, I wrote two methods.
 
-First one, We just catch data from a page.
+First one, I just catch data from a page.
 ```
-func (c Crawler) getDoc() error {
+func (c Crawler) getDoc() (*goquery.Document, error) {
 	res, err := http.Get(c.targetUrl)
 	if err != nil {
 		log.Fatal(err)
-		return err
+		return nil, err
 	}
 	defer res.Body.Close()
 	if res.StatusCode != 200 {
 		log.Fatalf("status code error: %d %s", res.StatusCode, res.Status)
-		return errors.New(res.Status)
+		return nil, errors.New(res.Status)
 	}
-	c.doc, err = goquery.NewDocumentFromReader(res.Body)
+	doc, err := goquery.NewDocumentFromReader(res.Body)
 	if err != nil {
 		log.Fatal(err)
-		return err
+		return nil, err
 	}
-	return nil
+	return doc, nil
 }
 ```
 
-Second one, we send different requests for further links.
+Second one, I send different requests for further links.
 ```
-func (c Crawler) reqDoc() error {
+func (c Crawler) reqDoc() (*goquery.Document, error) {
 	req, err := http.NewRequest("GET", c.targetUrl, nil)
 	if err != nil {
 		log.Fatal(err)
-		return err
+		return nil, err
 	}
 	header := map[string]string{
 		"Host":                      c.headHost,
@@ -87,15 +87,15 @@ func (c Crawler) reqDoc() error {
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Fatal(err)
-		return err
+		return nil, err
 	}
 	defer resp.Body.Close()
-	c.doc, err = goquery.NewDocumentFromReader(resp.Body)
+	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
 		log.Fatal(err)
-		return err
+		return nil, err
 	}
-	return nil
+	return doc, nil
 }
 ```
 
@@ -117,10 +117,15 @@ func Duplicate(dirty interface{}) (clean []interface{}) {
 
 Then, Let's write a method that filter some info from the response.
 ```
-func (c Crawler) getContent() error {
-	c.doc.Find(".content").Each(func(i int, s *goquery.Selection) {
+func (c *Crawler) getContent() error {
+	doc, err := c.reqDoc()
+	if err != nil {
+		log.Fatal(err)
+		return err
+	}
+	doc.Find(".content").Each(func(i int, s *goquery.Selection) {
 		content := s.Find("a").Text()
-		c.contents = append(c.contents, content)
+		c.Contents = append(c.Contents, content)
 	})
 	return nil
 }
@@ -129,10 +134,15 @@ func (c Crawler) getContent() error {
 This is another example for filtering picture info.
 ```
 func (c Crawler) getPic() error {
-	c.doc.Find("img").Each(func(i int, s *goquery.Selection) {
+	doc, err := c.reqDoc()
+	if err != nil {
+		log.Fatal(err)
+		return err
+	}
+	doc.Find("img").Each(func(i int, s *goquery.Selection) {
 		link, ok := s.Attr("src")
 		if ok {
-			c.contents = append(c.contents, link)
+			c.Contents = append(c.Contents, link)
 		} else {
 			fmt.Println("Address not found.")
 		}
@@ -145,7 +155,7 @@ func (c Crawler) getPic() error {
 
 Now, it's the turn we dealing with data.
 
-In this example, we create a file and then write the data we got from the website.
+In this example, I create a file and then write the data I got from the website.
 ```
 func (c Crawler) handleContent() error {
 	fileName := filepath.Base(c.targetUrl)
@@ -162,7 +172,7 @@ func (c Crawler) handleContent() error {
 }
 ```
 
-In this one, we download the pictures which we got info of from the website.
+In this one, I download the pictures which I got info of from the website.
 ```
 func (c Crawler) handlePic() {
 	for _, link := range c.contents {

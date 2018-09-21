@@ -1,7 +1,7 @@
 ---
 title: "Let's Make Our Own Blogs."
 date: 2018-09-18T12:00:00+08:00
-weight: 10
+weight: 20
 keywords: ["blog","Hugo"]
 description: "Make a blog website."
 tags: ["Hugo"]
@@ -14,7 +14,7 @@ banner: ""
 
 Nowadays, we don't have to write so much codes of front end, back-end or even set up resources for building a blog website. Thanks to our Open Source community, we can use many blog engines for setting our own blogs at all times, which is a very convenient way to make it done. This article will show you a basic process to complete this task.
 
-There are several engines you can use for your blog such as Jekyll, Octopress, Hexo and so on. Please google it. All of them are awesome and easy to use. Choose the one you prefer. Here, we will use a engine named Hugo for an example, which is a world-famous web framework and a static site generator written in Go.
+There are several engines you can use for your blog such as Jekyll, Octopress, Hexo and so on. Please google it. All of them are awesome and easy to use. Choose the one you prefer. Here, I will use a engine named Hugo for an example, which is a world-famous web framework and a static site generator written in Go.
 
 *Notice: There are some other ways to set up blog website such that use wordpress docker and deploy it on the Cloud or just buy the Cloud static site service. Furthermore, there are many social websites which can help you to set your own blog site with your domain. The way this article will offer is interesting but not simple. Additionally, it is for free.*
 
@@ -55,7 +55,7 @@ blog
 ├── static
 └── themes
 ```
-"config.toml" is the normal configration of your website. In most cases, we copy the "config.toml" of the example site in the theme as template and then modify it.
+"config.toml" is the normal configration of your website. In most cases, I copy the "config.toml" of the example site in the theme as template and then modify it.
 
 "content" directory will store article files which formed as "xx.md".
 
@@ -107,7 +107,7 @@ Here will be your article content.
 
 ## 6. Preview your website.
 
-Please modify "config.toml" and other customized file we mentioned in 1.2. Configure this info `baseurl = "https://$YOUR_USERNAME.github.io/$YOUR_REPO/"` in your "config.toml" for mapping the domain of Github Page. You also need to add `staticDir = ["static", "../../static"]` in your "config.toml" if you add files in "static" directory.
+Please modify "config.toml" and other customized file I mentioned in 1.2. Configure this info `baseurl = "https://$YOUR_USERNAME.github.io/$YOUR_REPO/"` in your "config.toml" for mapping the domain of Github Page. You also need to add `staticDir = ["static", "../../static"]` in your "config.toml" if you add files in "static" directory.
 
 Well, let's go ahead.
 

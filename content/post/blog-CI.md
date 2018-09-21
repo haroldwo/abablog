@@ -1,7 +1,7 @@
 ---
 title: "Make Blog Posting as a Simple Continuous Delivery."
 date: 2018-09-19T12:00:00+08:00
-weight: 20
+weight: 30
 keywords: ["blog","Travis"]
 description: "Make a simple CD."
 tags: ["Travis"]
@@ -12,13 +12,13 @@ author: "Fred"
 ## 1. Continuous Delivery.
 
 What is CD? Please look into [Wiki CD](https://en.wikipedia.org/wiki/Continuous_delivery).
-We can see our blog posting as a delivery every time we push our repo to GitHub, which can be used as CI/CD process. Well, Let me describe it simpler. Do you remember that we need to run `hugo -d ./docs` each time we doing our posting? This command means generating code from your local repo by Hugo. Only "docs" directory will be used as your website. Now, we try not to do this locally. We need something to do generating for us and then send us a report that the generating is ok or not. The only thing we need to do is push our repo to Github and wait for the report. Here, I need to explain that "generating" we said is actually a very complex part in a complete process of CI/CD for development. This article aims to give you a sense of CI/CD so that you can decouple your regular development process.
+We can see our blog posting as a delivery every time we push our repo to GitHub, which can be used as CI/CD process. Well, Let me describe it simpler. Do you remember that I need to run `hugo -d ./docs` each time I doing my posting? This command means generating code from your local repo by Hugo. Only "docs" directory will be used as your website. Now, I try not to do this locally. I need something to do generating for us and then send us a report that the generating is ok or not. The only thing I need to do is push my repo to Github and wait for the report. Here, I need to explain that "generating" I said is actually a very complex part in a complete process of CI/CD for development. This article aims to give you a sense of CI/CD so that you can decouple your regular development process.
 
 Notice: This process is actually not necessary for blog posting.
 
 ## 2. CI service.
 
-We choose Travis CI here for our Github repo. Travis CI is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub. It is a public platform and for free for personal. Please read [Travis CI](https://docs.travis-ci.com/user/getting-started#to-get-started-with-travis-ci)  to get start.
+I choose Travis CI here for our Github repo. Travis CI is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub. It is a public platform and for free for personal. Please read [Travis CI](https://docs.travis-ci.com/user/getting-started#to-get-started-with-travis-ci)  to get start.
 
 Also, you can deploy your own CI serivce locally such as Jenkins which will be introduced in another article.
 
