@@ -44,7 +44,7 @@ In most of cases, we only need to change host and referer of HTTP head. So I jus
 
 ## 3. HTTP request -> Web
 
-I use lib "github.com/PuerkitoBio/goquery" for convenience. You can use regexp instead of it for a more original way. Here, I wrote two methods.
+I used lib "github.com/PuerkitoBio/goquery" for convenience. You can use regexp instead of it for a more original way. Here, I wrote two methods.
 
 First one, I just catch data from a page.
 ```

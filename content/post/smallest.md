@@ -1,6 +1,6 @@
 ---
 title: "An Interesting Question of Stack."
-date: 2018-09-20T12:00:00+08:00
+date: 2018-09-22T12:00:00+08:00
 weight: 10
 keywords: ["golang"]
 description: "An Interesting Question of Stack."

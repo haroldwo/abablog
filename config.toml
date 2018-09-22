@@ -52,7 +52,7 @@ paginate = 10
 	[params.about]
 		hide  = false
 		title = "Let's keep pace with the times!"
-		content = "The topics in this blog will be mostly related to **Operations** area which I am working on. Please drop me an email or message if you have any questions of my articles. You can find my contact info at the end of this page."
+		content = "The topics in this blog will be mostly related to **IT** area which I am working on. Please drop me an email or message if you have any questions of my articles. You can find my contact info at the end of this page."
 
 
 	[params.portfolio]
