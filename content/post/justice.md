@@ -1,5 +1,5 @@
 ---
-title: "Note of Justice with Michael Sandel."
+title: "Note of *Justice With Michael Sandel*."
 date: 2018-09-19T12:00:00+08:00
 weight: 90
 keywords: ["blog","Thinking"]
