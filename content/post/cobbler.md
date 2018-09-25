@@ -188,7 +188,7 @@ At last, start you server. You will see the installation.
 
 ## 5. Reinstall.
 
-We can use PXE to reinstall or install [Koan](http://cobbler.github.io/manuals/2.8.0/6_-_Koan.html) for re-installation.
+We can use PXE to reinstall or [Koan](http://cobbler.github.io/manuals/2.8.0/6_-_Koan.html) for re-installation.
 ```
 # please customize the info
 yum -y install epel-release
