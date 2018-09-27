@@ -10,7 +10,7 @@ author: "Fred"
 banner: ""
 ---
 
-I read a article on the internet several days ago which raise a question about stack. The question is that how to get the smallest number for the best practice when pushing data on a stack and then poping it. I try to write down it in golang. Please have a look.
+I read an article on the internet several days ago which raised a question about stack. The question is that how to get the smallest number for the best practice when pushing data on a stack and then poping it. I try to write down it in golang. Please have a look.
 
 ```
 package main

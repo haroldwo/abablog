@@ -1,9 +1,9 @@
 ---
-title: "Note of Redis(ver.zh-CN)"
+title: "Note of Redis(ver zh-CN)"
 date: 2018-09-27T12:00:00+08:00
 weight: 20
 keywords: ["redis","zh-CN","prometheus"]
-description: "Note of Redis(ver.zh-CN)"
+description: "Note of Redis(ver zh-CN)"
 tags: ["redis","zh-CN","prometheus"]
 categories: ["Ops"]
 author: "Fred"
@@ -16,11 +16,13 @@ banner: ""
 
 ## 1. 关于Redis的一些笔记
 
-<iframe src='https://www.xmind.net/embed/9248/' width='1000px' height='900px' frameborder='0' scrolling='no' allowfullscreen="true"></iframe>
+内容较多，请耐心等待加载。
 
-以上是我收集的关于Redis的一些简要笔记，因为图片过大，所以以这种形式嵌入博客中。以上笔记没有涵盖所有官方的知识点，只作为复习时的索引使用。我会不定期更新笔记并放入博客中。
+<iframe src='https://www.xmind.net/embed/9248/' width='750px' height='900px' frameborder='0' scrolling='no' allowfullscreen="true"></iframe>
 
-我推荐使用Redis Cluster作为高可用的分布式集群方案。当然你也可以使用Sentinel，两者都是优秀的集群方案。但是有几点需要注意的是：
+以上是我收集的关于Redis的一些简要笔记，内容可以拖拽，放大和缩小。以上笔记没有涵盖所有官方的知识点，只作为复习时的索引使用。我会不定期更新笔记并放入博客中。
+
+我推荐使用Redis Cluster作为高可用的分布式集群方案。当然你也可以使用Sentinel，两者都是优秀的集群方案。但是有几点需要注意：
 
 1. Redis的数据复制是异步的，也就是说他不是一种强一致的数据库，无论哪种高可用方案都可能在故障转移中丢失极少量数据。
 2. Redis不适合放置于虚拟化平台中，性能将有大幅度下降。
@@ -114,7 +116,7 @@ done
 
 2. 在master节点配置集群
 
-ruby脚本有些小问题，用是可以用，但还是自己写了一下。这个输出比较多，跑的时候可以做成sh文件加参数把输出重定向到dev/null
+ruby脚本有些小问题，用是可以用，但还是自己写了一下。这个输出比较多，跑的时候可以做成sh文件把输出重定向到dev/null
 
 ```
 redis_port=(6379 6380 6381)
