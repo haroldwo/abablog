@@ -1,9 +1,9 @@
 ---
-title: "Use Cobbler to Deploy Ansible Controller."
+title: "Deploy Ansible With Cobbler."
 date: 2018-09-25T12:00:00+08:00
 weight: 20
 keywords: ["cobbler","ansible"]
-description: "Use Cobbler to Deploy Ansible Controller."
+description: "Deploy Ansible With Cobbler."
 tags: ["cobbler","ansible"]
 categories: ["Ops"]
 author: "Fred"
@@ -12,13 +12,13 @@ banner: ""
 
 ## 1. Scenario.
 
-How about to use a light application for IaaS. As we all know, the platform like OpenStack is awesome but too heavy. For small business, we always do not create a complex architecture. Since Kubernetes(K8S) appears, we give more scope to it in IaaS. Now, I will use [Cobbler](http://cobbler.github.io/manuals/2.8.0/) and Ansible to manage IaaS. They are much simpler than other platform such as OpenStack, Rancher, Vmware and so on. However, this architecture will be easy, simple and efficient.
+How about to use a light application for IaaS. As we all know, the platform like OpenStack is awesome but too heavy. For small business, we always do not create a complex architecture. Since Kubernetes(K8S) appears, we give more scope to it in IaaS. Now, I can use [Cobbler](http://cobbler.github.io/manuals/2.8.0/) and Ansible to manage some part of IaaS. They are much simpler than other platform such as OpenStack, Rancher, Vmware and so on, which can also be a good choice.
 
 Please see below picture for the scope.
 
 [![cobbler03.png](https://i.postimg.cc/brztCGqq/cobbler03.png)](https://postimg.cc/5YRyj2Hr)
 
-The only thing I need to do is to connect the server to the network and to note the NIC MAC address before using Cobbler to automatically execute OS installation task.
+The only thing we need to do is to connect the server to the network and to note the NIC MAC address before using Cobbler to automatically execute OS installation task.
 
 ## 2. Install Cobbler.
 
@@ -163,7 +163,7 @@ runuser -l $ansible_account -c 'ssh-keygen -f ~/.ssh/id_rsa -N ""'
 echo '[uncatalogued]' >> /etc/ansible/hosts
 ```
 
-The Snippets feature is useful for the [kickstart template](http://cobbler.github.io/manuals/2.8.0/3/5_-_Kickstart_Templating.html). I have configured some feature about it in the former script you may have noticed. Then I will create an ansible kickstart template from a standard template. PLease see the script.
+The Snippets feature is useful for the [kickstart template](http://cobbler.github.io/manuals/2.8.0/3/5_-_Kickstart_Templating.html). I have configured some feature about it in the former script you may have noticed. Then I will create an ansible kickstart template from a standard template. Please see the script.
 ```
 # please customize the packages file path, script name and kickstart name.
 packages=$(sed ':a;N;s/\n/\\n/g;ba' /path/to/file)
@@ -184,9 +184,45 @@ cobbler validateks /var/lib/cobbler/kickstarts/$kickstart
 cobbler sync
 ```
 
-At last, start you server. You will see the installation.
+After start the server, we will see the installation.
 
-## 5. Reinstall.
+## 5. Deploy regular server.
+
+Now, I will deploy a regular server with "id_rsa.pub" which generate by Ansible server so that I can add nodes in Ansible controller.
+
+1. Put public key on the http server. `scp $ansible_account@172.16.0.12:/home/$ansible_account/.ssh/id_rsa.pub /var/www/cobbler/pub`
+
+2. Reuse the deploy script with customized info such as "script=regular.sh, kickstart=regular.ks". Create the script we described and put it on `/var/www/cobbler/pub/regular.sh`.
+
+```
+ansible_pass=admin
+ansible_account=admin
+
+useradd $ansible_account
+echo "$ansible_pass" | passwd $ansible_account --stdin
+echo "$ansible_account ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+runuser -l $ansible_account -c "wget http://172.16.0.10/cobbler/pub/id_rsa.pub -P /home/$ansible_account/"
+runuser -l $ansible_account -c "mkdir -p /home/$ansible_account/.ssh"
+runuser -l $ansible_account -c "cat /home/$ansible_account/id_rsa.pub >> /home/$ansible_account/.ssh/authorized_keys"
+runuser -l $ansible_account -c "chmod 700 /home/$ansible_account/.ssh"
+runuser -l $ansible_account -c "chmod 600 /home/$ansible_account/.ssh/authorized_keys"
+```
+
+3. Add the system in cobbler. You can set more for concurrency. The below one is for your reference.
+
+```
+cobbler system add --name=regular01 --profile=CentOS-7-x86_64
+cobbler system edit --name=regular01 --interface=ens33 --mac=00:50:56:3A:0B:46 \
+--ip-address=172.16.0.13 --netmask=255.255.255.0 --static=1 --dns-name=redis01.mydomain.com \
+--name-servers=172.16.0.253 --kickstart=/var/lib/cobbler/kickstarts/regular.ks \
+--if-gateway=172.16.0.253 --hostname=redis01
+cobbler sync
+```
+
+We can add every node in Ansible conveniently in the future after regular OS installation.
+
+## 6. Reinstall.
 
 We can use PXE to reinstall or [Koan](http://cobbler.github.io/manuals/2.8.0/6_-_Koan.html) for re-installation.
 ```
