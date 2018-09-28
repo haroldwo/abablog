@@ -27,8 +27,8 @@ banner: ""
 1. Redis的数据复制是异步的，也就是说他不是一种强一致的数据库，无论哪种高可用方案都可能在故障转移中丢失极少量数据。
 2. Redis不适合放置于虚拟化平台中，性能将有大幅度下降。
 3. 不建议把Redis部署在K8S中。容器的特性和AOF的错误恢复无法兼容，而容器的通信方式也会对Redis节点间通信产生影响。如果愿意采坑填坑的话，请记得应用在SLA较低的场景下。
-4. 关闭SWAP或禁止Redis使用SWAP。并在配置文件中设置合理的内存上限。同时，选择最符合场景的淘汰算法。
-5. 在COW备份时，内存使用将有可能达到两倍。
+4. 关闭Swap或禁止Redis使用Swap。并在配置文件中设置合理的内存上限。同时，选择最符合场景的淘汰算法。
+5. 在CoW备份时，内存使用将有可能达到两倍。
 6. 订阅和发布不支持持久化。
 7. 避免将日志放到远程文件系统。
 8. 注意运行Redis的用户在系统中最大的文件句柄获得数(fs.file-max)和配置的maxclient是否匹配。
@@ -129,28 +129,28 @@ localhost=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{pr
 if [ $redis_role == master ]
 then
 for ip in $master_ip $slave_ip;do
-for port in ${redis_port[*]} ;do
-redis-cli -h $localhost -p ${redis_port[0]} -a $redis_password -c CLUSTER MEET $ip $port;
-done
+  for port in ${redis_port[*]} ;do
+    redis-cli -h $localhost -p ${redis_port[0]} -a $redis_password -c CLUSTER MEET $ip $port;
+  done
 done
 for slot in {0..5500};do
-redis-cli -h $master_ip -p ${redis_port[0]} -a $redis_password -c CLUSTER ADDSLOTS $slot;
+  redis-cli -h $master_ip -p ${redis_port[0]} -a $redis_password -c CLUSTER ADDSLOTS $slot;
 done
 for slot in {5501..11000};do
-redis-cli -h $master_ip -p ${redis_port[1]} -a $redis_password -c CLUSTER ADDSLOTS $slot;
+  redis-cli -h $master_ip -p ${redis_port[1]} -a $redis_password -c CLUSTER ADDSLOTS $slot;
 done
 for slot in {11001..16383};do
-redis-cli -h $master_ip -p ${redis_port[2]} -a $redis_password -c CLUSTER ADDSLOTS $slot;
+  redis-cli -h $master_ip -p ${redis_port[2]} -a $redis_password -c CLUSTER ADDSLOTS $slot;
 done
 for port in ${redis_port[*]} ;do
-master_id=$(sudo cat /usr/local/redis-cluster/$port/nodes-$port.conf | grep $master_ip:$port | awk '{print $1}');
+  master_id=$(sudo cat /usr/local/redis-cluster/$port/nodes-$port.conf | grep $master_ip:$port | awk '{print $1}');
 echo $master_id
 done
 elif [ $redis_role == slave ]
 then
-echo "Sorry, slave redis_cli feature will be completed in ansible."
+  echo "Sorry, slave redis_cli feature will be completed in ansible."
 else
-echo "redis_role error"
+  echo "redis_role error"
 fi
 ```
 
@@ -178,3 +178,54 @@ redis-cli -h $slave_ip -p ${redis_port[0]} -a $redis_password -c CLUSTER REPLICA
 redis-cli -h $slave_ip -p ${redis_port[1]} -a $redis_password -c CLUSTER REPLICATE $master_id2;
 redis-cli -h $slave_ip -p ${redis_port[2]} -a $redis_password -c CLUSTER REPLICATE $master_id3;
 ```
+
+## 3. 部署Redis exporter
+
+接下来为Prometheus部署Redis exporter。因为没有在Ansible Galaxy上找到合适的role。我还是自己写了下脚本。你可以选择Docker直接拉，有合适的镜像，但我推荐还是二进制直接跑，反而轻一些，系统层面上也更简单。K8S的三种监控模式这里不会拓展，请参考K8S的Prometheus Operator学习，helm的Redis模板里已经涵盖exporter的配置了。
+
+请注意，这里依赖一个ansible的golang role，也就是需要go环境，百度有go环境的安装教程，这里就不拓展了。另外，这个包"github.com/oliver006/redis_exporter"如果被墙，只要手动下载安装即可。
+
+```
+# 可以自定义变量, redis=''是固定的请不要改.
+redis_ip=172.16.0.13
+redis_port=(6379 6380 6381)
+redis_password=fred
+redis_exporter_listen=9121
+redis=''
+for port in ${redis_port[*]} ;
+do
+  if [ -n "$redis" ]
+  then
+    redis="$redis","redis://$redis_ip:$port"
+  else
+    redis="redis://$redis_ip:$port"
+  fi
+done
+
+go get github.com/oliver006/redis_exporter
+cd $GOPATH/src/github.com/oliver006/redis_exporter
+go build
+sudo mv $GOPATH/src/github.com/oliver006/redis_exporter/redis_exporter /bin/redis-exporter
+sudo firewall-cmd --add-port=$redis_exporter_listen/tcp
+sudo firewall-cmd --runtime-to-permanent
+sudo bash -c "cat <<EOF > /usr/lib/systemd/system/redis-exporter.service
+[Unit]
+Description=Redis Exporter Service
+After=network.target
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/bin/redis-exporter --redis.addr=$redis --redis.password=$redis_password --web.listen-address=0.0.0.0:$redis_exporter_listen
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF"
+sudo systemctl daemon-reload
+sudo systemctl enable redis-exporter.service &&
+sudo systemctl start redis-exporter.service
+```
+
+验证一下`curl localhost:9121/metrics`，看到实例信息就ok了。
