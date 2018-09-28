@@ -79,7 +79,7 @@ If you have no idea about the best practice, here is some thinking for your refe
 
 The answer is as following.
 ***
-The answer of that article is to use index. Before I read the answer, I can only complete the task "1.". Now, I try to write down my version to complete task "2.". How about yours?
+The answer of that article is to use index. Before I read the answer, I can only complete the task One. Now, I try to write down my version to complete task One and Two. How about yours?
 
 The output with the auxiliary stack of index is as below. That is really awesome.
 ```

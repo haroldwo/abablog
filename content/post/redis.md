@@ -1,6 +1,6 @@
 ---
 title: "Note of Redis(ver zh-CN)"
-date: 2018-09-27T12:00:00+08:00
+date: 2018-09-28T12:00:00+08:00
 weight: 20
 keywords: ["redis","zh-CN","prometheus"]
 description: "Note of Redis(ver zh-CN)"
@@ -187,7 +187,7 @@ redis-cli -h $slave_ip -p ${redis_port[2]} -a $redis_password -c CLUSTER REPLICA
 
 ```
 # 可以自定义变量, redis=''是固定的请不要改.
-redis_ip=172.16.0.13
+redis_ip=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
 redis_port=(6379 6380 6381)
 redis_password=fred
 redis_exporter_listen=9121
