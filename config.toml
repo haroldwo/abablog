@@ -88,7 +88,7 @@ paginate = 10
 			"Shanghai",
 			"China"
 		]
-		phone = "+86-177-0179-6604"
+		#phone = "+86-177-0179-6604"
 
 		# Since this template is static, the contact form uses www.formspree.io as a
 		# proxy. The form makes a POST request to their servers to send the actual

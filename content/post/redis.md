@@ -181,7 +181,7 @@ redis-cli -h $slave_ip -p ${redis_port[2]} -a $redis_password -c CLUSTER REPLICA
 
 ## 3. 部署Redis exporter
 
-接下来为Prometheus部署Redis exporter。因为没有在Ansible Galaxy上找到合适的role。我还是自己写了下脚本。你可以选择Docker直接拉，有合适的镜像，但我推荐还是二进制直接跑，反而轻一些，系统层面上也更简单。K8S的三种监控模式这里不会拓展，请参考K8S的Prometheus Operator学习，helm的Redis模板里已经涵盖exporter的配置了。
+接下来为Prometheus部署Redis exporter。因为没有在Ansible Galaxy上找到合适的role。我还是自己写了下脚本。你可以选择Docker直接拉，有合适的镜像，但我推荐还是二进制直接跑，反而轻一些，系统层面上也更简单。K8S上的监控请参考Prometheus Operator学习，helm的Redis模板里已经涵盖了exporter的配置。
 
 请注意，这里依赖一个ansible的golang role，也就是需要go环境，百度有go环境的安装教程，这里就不拓展了。另外，这个包"github.com/oliver006/redis_exporter"如果被墙，只要手动下载安装即可。
 
