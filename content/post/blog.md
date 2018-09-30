@@ -149,4 +149,6 @@ Please find Github Page options under the settings tab of your repo. Select "mas
 
 ![blog02.png](https://i.postimg.cc/Ls2RYKcL/blog02.png)
 
-At the next time you update your blogs, please refer to 5th, 6th and 7th part of this article. Thank you for your reading.
+At the next time you update your blogs, please refer to 5th, 6th and 7th part of this article.
+
+Thank you for your reading.

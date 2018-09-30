@@ -22,3 +22,5 @@ author: "Fred"
 ***
 
 ### 4. We should not have a prejudice against proceeding critical thinking. We should dare to accept those conclusion proved at all times and take care to believe and not to be deceived. We need to find a balance between reasonable suspicion and prejudice through critical thinking. And when there comes a new evidence, we should be willing to change our former views
+
+Thank you for your reading.

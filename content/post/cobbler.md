@@ -234,3 +234,5 @@ koan --server=cobbler.mydomain.org --replace-self --system=name
 reboot
 ```
 [Auto-Registration](http://cobbler.github.io/manuals/2.8.0/4/8_-_Auto-Registration.html) is useful when using koan for Cobbler.
+
+Thank you for your reading.

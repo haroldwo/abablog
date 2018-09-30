@@ -78,3 +78,5 @@ You can customize the life cycle of your build. Please look into [Travis CI Docs
 Now, Travis CI will automatically build your code and update your repo every time you push your repo to Github. You will receive an email for the build info. You can also see the process log on your Travis CI page.
 
 [![blog-_CI05.png](https://i.postimg.cc/rsRbGPJC/blog-_CI05.png)](https://postimg.cc/WqjXTSxh)
+
+Thank you for your reading.

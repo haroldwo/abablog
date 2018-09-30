@@ -133,3 +133,5 @@ Any polis which is truly so called, and is not merely one in name, must devote i
 "A truly virtuous man would come to the aid of the most distant stranger as quickly as to his own friend. If men were perfectly virtuous, they wouldn't have friends." -- Montesquieu
 
 "A conception of justice cannot be deduced from self-evident premises. Its justification is a matter of the mutual support of many considerations, of everything fitting together into one coherent view." "Moral philosophy is Socratic. We may want to change our present considered judgments once their regulative principles are brought to light." -- John Rawis
+
+Thank you for your reading.

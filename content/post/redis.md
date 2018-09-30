@@ -229,3 +229,5 @@ sudo systemctl start redis-exporter.service
 ```
 
 验证一下`curl localhost:9121/metrics`，看到实例信息就ok了。
+
+感谢你的阅读。
