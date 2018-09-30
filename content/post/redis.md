@@ -79,7 +79,7 @@ sudo sed -i 's/slowlog-log-slower-than 10000/slowlog-log-slower-than 100000/g' /
 sudo sed -i 's/# maxmemory <bytes>/maxmemory 1073741824/g' /usr/local/redis-cluster/$port/redis.conf ;
 sudo sed -i 's/# min-slaves-to-write 3/min-slaves-to-write 1/g' /usr/local/redis-cluster/$port/redis.conf ;
 sudo sed -i 's/# min-slaves-max-lag 10/min-slaves-max-lag 5/g' /usr/local/redis-cluster/$port/redis.conf ;
-sudo sed -i '# cluster-migration-barrier 1/cluster-migration-barrier 1/g' /usr/local/redis-cluster/$port/redis.conf ;
+sudo sed -i 's/# cluster-migration-barrier 1/cluster-migration-barrier 1/g' /usr/local/redis-cluster/$port/redis.conf ;
 sudo bash -c 'cat <<EOF >> /usr/local/redis-cluster/$port/redis.conf
 rename-command FLUSHALL ""
 rename-command FLUSHDB ""
