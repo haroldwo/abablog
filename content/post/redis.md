@@ -36,14 +36,14 @@ banner: ""
 
 ## 2. 部署Redis Cluster
 
-先安装Redis，这里是一个双节点，每节点三个实例的集群。以下脚本结合了一些优化，在CentOS7上可以一键跑完，仅做参考，请根据场景自定义。目前在Ansible Galaxy上没看到合适的role，打算写一个做成双节点和六节点两个模式的role，但一直没时间。另外，如果在K8S部署，推荐使用helm，但是请关注他使用的集群方式以及是否是stateful set。前一段时间看，还是没有适合的有状态集群部署模板。无状态是没问题的。
+先安装Redis，这里是一个双节点，每节点三个实例的集群。以下脚本结合了一些优化，仅做参考，请根据场景自定义。目前在Ansible Galaxy上没看到合适的role，打算写一个做成双节点和六节点两个模式的role，但一直没时间。另外，如果在K8S部署，推荐使用helm，但是请关注他使用的集群方式以及是否是stateful set。前一段时间看，还是没有适合的有状态集群部署模板。无状态是没问题的。
 
 Redis的配置文件中的每一项都解释得非常清楚。这个赞一下。
 
 1. 在每个节点部署服务
 
 ```
-# CentOS Linux release 7.3和7.4已通过测试
+# CentOS Linux release 7.3
 # 可以自定义以下变量
 redis_version=stable
 redis_port=(6379 6380 6381)
@@ -116,7 +116,7 @@ done
 
 2. 在master节点配置集群
 
-ruby脚本有些小问题，用是可以用，但还是自己写了一下。这个输出比较多，跑的时候可以做成sh文件把输出重定向到dev/null
+ruby脚本有些小问题，用是可以用，我还是自己写了一下。这个输出比较多，跑的时候可以做成sh文件把输出重定向到dev/null
 
 ```
 redis_port=(6379 6380 6381)
@@ -156,13 +156,13 @@ fi
 
 请记下出现的三个masterID。
 
-以下是我实践的官方单节点六实例部署方式，请参考。
+以下是官方提供的单节点六实例部署方式，请参考。
 
 ```
 sudo yum -y install ruby rubygems
 sudo gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
 sudo gem install redis --version 3.0.0
-sudo /usr/local/src/redis-$redis_version/src/redis-trib.rb create --replicas 1 172.16.0.13.106:1079 172.16.0.13.106:1080 172.16.0.13.106:1081 172.16.0.13.107:1079 172.16.0.13.107:1080 172.16.0.13.107:1081
+sudo /usr/local/src/redis-$redis_version/src/redis-trib.rb create --replicas 1 172.16.0.13:6379 172.16.0.13:6380 172.16.0.13:6381 172.16.0.13:6382 172.16.0.13.107:6383 172.16.0.13:6384
 ```
 
 3. 在slave节点配置集群
@@ -186,7 +186,7 @@ redis-cli -h $slave_ip -p ${redis_port[2]} -a $redis_password -c CLUSTER REPLICA
 请注意，这里依赖一个ansible的golang role，也就是需要go环境，百度有go环境的安装教程，这里就不拓展了。另外，这个包"github.com/oliver006/redis_exporter"如果被墙，只要手动下载安装即可。
 
 ```
-# 可以自定义变量, redis=''是固定的请不要改.
+# 可以自定义变量, redis=''是固定的请不要修改.
 redis_ip=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
 redis_port=(6379 6380 6381)
 redis_password=fred
