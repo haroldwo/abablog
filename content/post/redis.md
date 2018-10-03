@@ -91,9 +91,7 @@ sudo bash -c "cat <<EOF > /usr/lib/systemd/system/redis$port.service
 [Unit]
 Description=Redis $port Service
 After=network.target
-After=network-online.target
 Wants=network-online.target
-Before=time-sync.target
 Wants=time-sync.target
 
 [Service]
@@ -212,7 +210,6 @@ sudo bash -c "cat <<EOF > /usr/lib/systemd/system/redis-exporter.service
 [Unit]
 Description=Redis Exporter Service
 After=network.target
-After=network-online.target
 Wants=network-online.target
 
 [Service]
@@ -225,7 +222,7 @@ WantedBy=multi-user.target
 EOF"
 sudo systemctl daemon-reload
 sudo systemctl enable redis-exporter.service &&
-sudo systemctl start redis-exporter.service
+sudo systemctl restart redis-exporter.service
 ```
 
 验证一下`curl localhost:9121/metrics`，看到实例信息就ok了。
