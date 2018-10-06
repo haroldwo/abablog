@@ -21,6 +21,7 @@ Normally, we will use acknowledgements and confirms during the delivery expect t
 Here comes a normal process of clients use.
 
 a. Producer
+
 1. Build connection with server.
 2. Open a server channel to process the bulk of AMQP messages.
 3. Declare an exchange on the server.
@@ -31,6 +32,7 @@ a. Producer
 We can also declare a queue to hold messages and directly deliver to consumers without routing key.
 
 b. Consumer
+
 1. Build connection with server.
 2. Open a unique, concurrent server channel to process the bulk of AMQP
 messages.
