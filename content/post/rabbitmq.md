@@ -3,7 +3,7 @@ title: "Note of RabbitMQ"
 date: 2018-10-06T12:00:00+08:00
 weight: 20
 keywords: ["rabbitmq","prometheus"]
-description: "Note of Redis(ver zh-CN)"
+description: "Note of RabbitMQ"
 tags: ["rabbitmq","prometheus"]
 categories: ["Ops"]
 author: "Fred"
