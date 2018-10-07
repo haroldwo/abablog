@@ -14,7 +14,7 @@ banner: ""
 
 How about to use a light application for IaaS. As we all know, the platform like OpenStack is awesome but too heavy. For small business, we always do not create a complex architecture. Since Kubernetes(K8S) appears, we give more scope to it in IaaS. Now, I can use [Cobbler](http://cobbler.github.io/manuals/2.8.0/) and Ansible to manage some part of IaaS. They are much simpler than other platform such as OpenStack, Rancher, Vmware and so on, which can also be a good choice.
 
-Please see below picture for the scope.
+Please see the picture below for the scope.
 
 [![cobbler03.png](https://i.postimg.cc/brztCGqq/cobbler03.png)](https://postimg.cc/5YRyj2Hr)
 
@@ -142,7 +142,7 @@ zlib-devel
 sysstat
 ```
 
-Please create a script file located in any folder of `/var/www/cobbler/` which will be used to deploy Ansible. This is because I used some command in kickstart to call this script from the target server. I put it on `/var/www/cobbler/pub/ansible.sh`. Below script is for your reference.
+Please create a script file located in any folder of `/var/www/cobbler/` which will be used to deploy Ansible. This is because I used some command in kickstart to call this script from the target server. I put it on `/var/www/cobbler/pub/ansible.sh`. This script is for your reference.
 ```
 ansible_pass=admin
 ansible_account=admin
@@ -151,16 +151,15 @@ wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate
 python get-pip.py
 pip install http://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm
 pip install --upgrade pip
-pip install pyvmomi # for VMware
+pip install pyvmomi # just for VMware
 
-yum -y install epel-release expect # expect is used for further ansible deployment. you can ignore it.
+yum -y install epel-release
 yum -y install ansible
 useradd $ansible_account
 echo "$ansible_pass" | passwd $ansible_account --stdin
 echo "$ansible_account ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 runuser -l $ansible_account -c 'ssh-keygen -f ~/.ssh/id_rsa -N ""'
-echo '[uncatalogued]' >> /etc/ansible/hosts
 ```
 
 The Snippets feature is useful for the [kickstart template](http://cobbler.github.io/manuals/2.8.0/3/5_-_Kickstart_Templating.html). I have configured some feature about it in the former script you may have noticed. Then I will create an ansible kickstart template from a standard template. Please see the script.
@@ -210,7 +209,7 @@ runuser -l $ansible_account -c "chmod 700 /home/$ansible_account/.ssh"
 runuser -l $ansible_account -c "chmod 600 /home/$ansible_account/.ssh/authorized_keys"
 ```
 
-3. Add the system in cobbler. You can set more for concurrency. The below one is for your reference.
+3. Add the system in cobbler. You can set more for concurrency. The one below is for your reference.
 
 ```
 cobbler system add --name=regular01 --profile=CentOS-7-x86_64
