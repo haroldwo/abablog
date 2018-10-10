@@ -16,7 +16,7 @@ I made a flowchart of basic process of RabbitMQ as following.
 
 [![rabbitmq01.png](https://i.postimg.cc/CK4NwBXd/rabbitmq01.png)](https://postimg.cc/Y4hg39pw)
 
-Normally, we will use acknowledgements and confirms during the delivery expect that lose of messages is accepted in specified scenarios.
+Normally, we will use acknowledgements and confirms during the delivery except that lose of messages is accepted in specified scenarios.
 
 Here comes a normal process of clients use.
 
