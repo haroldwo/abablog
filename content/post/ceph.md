@@ -1,6 +1,6 @@
 ---
 title: "Note of Ceph"
-date: 2018-10-06T12:00:00+08:00
+date: 2018-10-16T12:00:00+08:00
 weight: 20
 keywords: ["ceph"]
 description: "Note of Ceph"
@@ -26,3 +26,5 @@ The official documents has involved complete process for deployment. I just writ
 4. "public network" should be set for Ceph cluster in ceph.conf or the node deployment can be failed.
 5. Prometheus exporter can be easily deployed within Ceph-manager module. `ceph mgr module enable prometheus`. The module will accept HTTP requests on port 9283 on all IPv4 and IPv6 addresses on the host.
 6. For K8S, you can use Rook or Helm to deploy Ceph. Both of these two ways are under active development now. Please read those documents carefully if you use it in production.
+
+Thank you for your reading.
