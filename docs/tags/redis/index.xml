@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on Fred&#39;s blog</title>
+    <link>https://haroldwo.github.io/abablog/tags/redis/</link>
+    <description>Recent content in Redis on Fred&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Sep 2018 12:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://haroldwo.github.io/abablog/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Note of Redis(ver zh-CN)</title>
+      <link>https://haroldwo.github.io/abablog/post/redis/</link>
+      <pubDate>Fri, 28 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/redis/</guid>
+      <description>Notice: I will write an article in Chinese if the info I collected is translated well in Chinese.
+注意事项：如果我收集的资料已经被很好地翻译成了中文，那我会使用中文写这篇文章。
+1. 一些笔记 内容较多，请耐心等待加载。
+ 以上是我收集的关于Redis的一些简要笔记，内容可以拖拽，放大和缩小。以上笔记没有涵盖所有官方的知识点，只作为复习时的索引使用。我会不定期更新笔记并放入博客中。
+我推荐使用Redis Cluster作为高可用的分布式集群方案。当然你也可以使用Sentinel，两者都是优秀的集群方案。但是有几点需要注意：
+ Redis的数据复制是异步的，无论哪种高可用方案都可能在故障转移中丢失极少量数据。 Redis不适合放置于虚拟化平台中，性能将有大幅度下降。 不建议把Redis部署在K8S中。容器的特性和AOF的错误恢复无法兼容，而容器的通信方式也会对Redis节点间通信产生影响。如果愿意采坑填坑的话，请记得应用在SLA较低的场景下。 关闭Swap或禁止Redis使用Swap。并在配置文件中设置合理的内存上限。同时，选择最符合场景的淘汰算法。 在CoW备份时，内存使用将有可能达到两倍。 订阅和发布不支持持久化。 避免将日志放到远程文件系统。 注意运行Redis的用户在系统中最大的文件句柄获得数(fs.file-max)和配置的maxclient是否匹配。 确定ntp同步。  2. 部署Redis Cluster 先安装Redis，这里是一个双节点，每节点三个实例的集群。以下脚本结合了一些优化，仅做参考，请根据场景自定义。目前在Ansible Galaxy上没看到合适的role，打算写一个做成双节点和六节点两个模式的role，但一直没时间。另外，如果在K8S部署，推荐使用helm，但是请关注他使用的集群方式以及是否是stateful set。前一段时间看，还是没有适合的有状态集群部署模板。无状态是没问题的。
+Redis的配置文件中的每一项都解释得非常清楚。这个赞一下。
+ 在每个节点部署服务  # CentOS Linux release 7.3 # 可以自定义以下变量 redis_version=stable redis_port=(6379 6380 6381) redis_password=fred localhost=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk &#39;{print $2}&#39;|tr -d &amp;quot;addr:&amp;quot;) sudo yum -y install gcc wget tcl ntp sudo systemctl start ntpd sudo ntpdate time.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Goquery on Fred&#39;s blog</title>
+    <link>https://haroldwo.github.io/abablog/tags/goquery/</link>
+    <description>Recent content in Goquery on Fred&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Sep 2018 12:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://haroldwo.github.io/abablog/tags/goquery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Write a Simple Crawler.</title>
+      <link>https://haroldwo.github.io/abablog/post/crawler/</link>
+      <pubDate>Thu, 20 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/crawler/</guid>
+      <description>1. Basic process. HTTP request -&amp;gt; Web -&amp;gt; HTTP response -&amp;gt; Parse data -&amp;gt; Handle data This is the basic process of a crawler program. I will not talk about concurrency or distributed framework here. This article aim to give a simple introduction of crawler.
+A crawler actually is a script which execute simulation of our action very fast when we browse a web page and it follows some rules we designed for catching our data.</description>
+    </item>
+    
+  </channel>
+</rss>

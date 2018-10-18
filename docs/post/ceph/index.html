@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+
+<!-- 
+Strata by HTML5 UP
+html5up.net | @n33co
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Note of Ceph &middot; Fred&#39;s blog</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Fred Wong">
+		<meta name="description" content="Fred&#39;s blog demo">
+		<meta http-equiv="content-language" content="en-us" />
+
+		
+		<meta name="og:site_name" content="Fred&#39;s blog">
+		<meta name="og:title" content="Note of Ceph">
+		<meta name="og:url" content="https://haroldwo.github.io/abablog/post/ceph/">
+		
+		<meta name="og:image" content="https://haroldwo.github.io/abablog/images/avatar.PNG">
+		
+		
+
+		<meta name="generator" content="Hugo 0.48" />
+
+		<!--[if lte IE 8]><script src='https://haroldwo.github.io/abablog/js/ie/html5shiv.js'></script><![endif]-->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://haroldwo.github.io/abablog/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="https://haroldwo.github.io/abablog//css/ie8.css"><![endif]-->
+
+		
+		
+	</head>
+
+	<body id="top">
+		<!-- Header -->
+<header id="header">
+	
+	<a href="https://haroldwo.github.io/abablog/" class="image avatar"><img src="https://haroldwo.github.io/abablog/images/avatar.PNG" alt="" /></a>
+	
+	
+		<h1><strong>Hi! I&rsquo;m Fred Wong,</strong><br> an Open Source technophile.<br> This is my site. Enjoy!</h1>
+	
+
+	
+		<nav id="sidebar">
+			<ul>
+			
+				<li><a href="https://haroldwo.github.io/abablog/">Home</a></li>
+			
+				<li><a href="https://haroldwo.github.io/abablog/post/">Blog</a></li>
+			
+			</ul>
+		</nav>
+	
+</header>
+
+
+		<!-- Main -->
+		<div id="main">
+			
+	<span>
+		<h1>Note of Ceph</h1>
+
+		<i class="fa fa-calendar"></i>&nbsp;&nbsp;
+<time datetime="2018-10-16 12:00:00 &#43;0800 &#43;0800">2018-10-16</time>&nbsp;&nbsp;
+
+1 min read&nbsp;&nbsp;
+
+
+    
+    
+        <i class="fa fa-folder"></i>&nbsp;&nbsp;
+        
+        <a class="article-category-link" href="https://haroldwo.github.io/abablog/categories/ops">Ops</a>
+        
+        
+    
+
+
+
+   
+   
+       &nbsp;&nbsp;<i class="fa fa-tags"></i>&nbsp;&nbsp;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/ceph">ceph</a>
+       
+       
+   
+
+
+	</span>
+
+	<p>
+	    
+
+<h2 id="1-basic-knowledge">1. Basic Knowledge</h2>
+
+<p>The note I collected is as below. Not all of the Ceph knowledge is involving in this note. I use it just for review. I will update it aperiodically.</p>
+
+<iframe src='https://www.xmind.net/embed/TYjA/' width='750px' height='900px' frameborder='0' scrolling='no' allowfullscreen="true"></iframe>
+
+<h2 id="2-deployment">2. Deployment</h2>
+
+<p>The official documents has involved complete process for deployment. I just write some notes here during my deployment.</p>
+
+<ol>
+<li>Updating kernel is necessary for Ceph. For now, kernel version 4.9 and 4.14 is recommmanded according to the official suggestion, or new CRUSH feature cannot be applied. Remember to update all software on the server after updating kernel.</li>
+<li>Disable selinux.</li>
+<li>Official repository can be unreachable sometimes. You may try some other mirror such as hk.ceph.com with a high priority.</li>
+<li>&ldquo;public network&rdquo; should be set for Ceph cluster in ceph.conf or the node deployment can be failed.</li>
+<li>Prometheus exporter can be easily deployed within Ceph-manager module. <code>ceph mgr module enable prometheus</code>. The module will accept HTTP requests on port 9283 on all IPv4 and IPv6 addresses on the host.</li>
+<li>For K8S, you can use Rook or Helm to deploy Ceph. Both of these two ways are under active development now. Please read those documents carefully if you use it in production.</li>
+</ol>
+
+<p>Thank you for your reading.</p>
+
+	</p>
+
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "haroldwo" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+		</div>
+
+		<!-- Footer -->
+<footer id="footer">
+	<ul class="icons">
+		
+		
+		
+		
+		<li><a href="//github.com/haroldwo" target="_blank" class="icon fa-github"><span class="label">GitHub</span></a></li>
+		
+		
+		
+		<li><a href="//linkedin.com/in/fredwo" target="_blank" class="icon fa-linkedin-square"><span class="label">Linkedin</span></a></li>
+		
+		
+		
+		
+		<li><a href="https://haroldwo.github.io/abablog/#contact-form" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+		
+		
+		<li><a href="https://haroldwo.github.io/abablog/index.xml" class="icon fa-rss" type="application/rss+xml"><span class="label">RSS</span></a></li>
+		
+	</ul>
+
+	<ul class="copyright">
+		
+		<li>&copy; John Doe</li>
+		
+		<li>Design: <a href="//html5up.net">HTML5 UP</a></li>
+		
+		<li>Images: <a href="//unsplash.com/">Unsplash</a></li>
+		
+	</ul>
+</footer>
+
+<!-- Scripts -->
+<script src="https://haroldwo.github.io/abablog/js/jquery.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/jquery.poptrox.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/skel.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/util.js"></script>
+
+<script src="https://haroldwo.github.io/abablog/js/main.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-125977378-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+	</body>
+</html>

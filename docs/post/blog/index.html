@@ -7,7 +7,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 -->
 <html>
 	<head>
-		<title>Let&#39;s make our own blogs. &middot; Fred&#39;s blog</title>
+		<title>Let&#39;s Make Our Own Blogs. &middot; Fred&#39;s blog</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="author" content="Fred Wong">
@@ -16,7 +16,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 		
 		<meta name="og:site_name" content="Fred&#39;s blog">
-		<meta name="og:title" content="Let&#39;s make our own blogs.">
+		<meta name="og:title" content="Let&#39;s Make Our Own Blogs.">
 		<meta name="og:url" content="https://haroldwo.github.io/abablog/post/blog/">
 		
 		<meta name="og:image" content="https://haroldwo.github.io/abablog/images/avatar.PNG">
@@ -62,7 +62,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 		<div id="main">
 			
 	<span>
-		<h1>Let&#39;s make our own blogs.</h1>
+		<h1>Let&#39;s Make Our Own Blogs.</h1>
 
 		<i class="fa fa-calendar"></i>&nbsp;&nbsp;
 <time datetime="2018-09-18 12:00:00 &#43;0800 &#43;0800">2018-09-18</time>&nbsp;&nbsp;
@@ -74,7 +74,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     
         <i class="fa fa-folder"></i>&nbsp;&nbsp;
         
-        <a class="article-category-link" href="https://haroldwo.github.io/abablog/categories/other">other</a>
+        <a class="article-category-link" href="https://haroldwo.github.io/abablog/categories/other">Other</a>
         
         
     
@@ -96,37 +96,40 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	<p>
 	    
 
-<h3 id="1-blog">1. Blog.</h3>
+<h2 id="1-blog">1. Blog.</h2>
 
-<p><strong>Nowadays, when we want to create a blog website, we don&rsquo;t need to write so much codes of front end, back-end or even set up resources for the website. Thanks to our Open source community. At all times, we can use many blog engines for setting our own blogs, which is a very convenient way to make it done. This article will show you some basic process to complete this task.</strong></p>
+<p>Nowadays, we don&rsquo;t have to write so much codes of front end, back-end or even set up resources for building a blog website. Thanks to our Open Source community, we can use many blog engines for setting our own blogs at all times, which is a very convenient way to make it done. This article will show you a basic process to complete this task.</p>
 
-<p><strong>There are several engines you can use for your blog such as Jekyll, Octopress, Hexo and so on. Please google it. All of them are awesome and easy to use. Choose the one you prefer. Here, we will use a engine named Hugo for example which is a world-famous web framework and a static site generator written in Go.</strong></p>
+<p>There are several engines you can use for your blog such as Jekyll, Octopress, Hexo and so on. Please google it. All of them are awesome and easy to use. Choose the one you prefer. Here, I will use a engine named Hugo for an example, which is a world-famous web framework and a static site generator written in Go.</p>
 
-<p><strong><em>Notice: There are some other ways to set up blog website such that use wordpress docker and deploy it on the Cloud or just buy the Cloud static site service. Furthermore, there are many social websites which can help you to set your own blog site with your domain. The way this article will offer is interesting but not easy. However, it is for free.</em></strong></p>
+<p><em>Notice: There are some other ways to set up blog website such that use wordpress docker and deploy it on the Cloud or just buy the Cloud static site service. Furthermore, there are many social websites which can help you to set your own blog site with your domain. The way this article will offer is interesting but not simple. Additionally, it is for free.</em></p>
 
-<h3 id="2-preparation">2. Preparation.</h3>
+<h2 id="2-preparation">2. Preparation.</h2>
 
-<p><strong>2.1 Become a github user.</strong></p>
+<h3 id="2-1-become-a-github-user">2.1 Become a github user.</h3>
 
-<p><strong>How to get it? Please refer to <a href="https://help.github.com/categories/bootcamp/">Github Bootcamp</a> and <a href="https://help.github.com/categories/setup/">Github Setup</a></strong></p>
+<p>How to get it? Please read and try <a href="https://help.github.com/categories/bootcamp/">Github Bootcamp</a> and <a href="https://help.github.com/categories/setup/">Github Setup</a></p>
 
-<p><strong>2.2 Choose a Markdown editor</strong></p>
+<h3 id="2-2-choose-a-markdown-editor">2.2 Choose a Markdown editor.</h3>
 
-<p><strong>This is for editing your blog. Please google it and choose one. I recommand Atom here if you have no idea. How to get it? Please refer to <a href="https://atom.io/">Atom</a></strong></p>
+<p>It is for editing your blog. Please google it and choose one of Markdown editors. I recommand Atom here if you have no idea. How to get it? Please look into <a href="https://atom.io/">Atom</a>.</p>
 
-<h3 id="3-engine-installation">3. Engine installation.</h3>
+<h2 id="3-engine-installation">3. Engine installation.</h2>
 
-<p><strong>Installation details please refer to <a href="https://gohugo.io/getting-started/installing/">Hugo manual</a>. If you use Ubuntu and golang environment, you can directly use my script.</strong></p>
+<p>Installation details please see <a href="https://gohugo.io/getting-started/installing/">Hugo manual</a>. If you are using Ubuntu system and golang environment, you can directly use my script.</p>
 
 <pre><code>wget https://github.com/gohugoio/hugo/releases/download/v0.48/hugo_0.48_Linux-64bit.tar.gz -P ~
 cd /usr/local/bin
-tar zxvf ~/hugo_0.48_Linux-64bit.tar.gz hugo    //We only need this binary file.
-mkdir -p $GOPATH/src/github.com/$YOURUSERNAME    //Please replace $YOURUSERNAME with your Github account.
-cd $GOPATH/src/github.com/$YOURUSERNAME
-hugo new site $YOURREPO    //$YOURREPO will be your new Github repo.
+tar zxvf ~/hugo_0.48_Linux-64bit.tar.gz hugo
+// We only need this binary file.
+mkdir -p $GOPATH/src/github.com/$YOUR_USERNAME
+// Please replace $YOUR_USERNAME with your Github account.
+cd $GOPATH/src/github.com/$YOUR_USERNAME
+hugo new site $YOUR_REPO
+// $YOUR_REPO will be your new Github repo.
 </code></pre>
 
-<p><strong>Below is the directory structure of your site.</strong></p>
+<p>Below is the directory structure of your site.</p>
 
 <pre><code>blog
 ├── archetypes
@@ -139,31 +142,40 @@ hugo new site $YOURREPO    //$YOURREPO will be your new Github repo.
 └── themes
 </code></pre>
 
-<p><strong>&ldquo;config.toml&rdquo; is the normal configration of your website. In most cases, we copy the &ldquo;config.toml&rdquo; of the example site in the theme as template and then modify it.</strong></p>
+<p>&ldquo;config.toml&rdquo; is the normal configration of your website. In most cases, I copy the &ldquo;config.toml&rdquo; of the example site in the theme as template and then modify it.</p>
 
-<p><strong>&ldquo;content&rdquo; directory will store article files which formed as &ldquo;xx.md&rdquo;.</strong></p>
+<p>&ldquo;content&rdquo; directory will store article files which formed as &ldquo;xx.md&rdquo;.</p>
 
-<p><strong>&ldquo;static&rdquo; directory will store image files and other static files such as css and js files. All of them are customized by yourself.</strong></p>
+<p>&ldquo;static&rdquo; directory will store image files and other static files such as css and js files. All of them are customized by yourself.</p>
 
-<p><strong>&ldquo;themes&rdquo; directory will store the themes you choose which are downloaded from the theme owner.</strong></p>
+<p>&ldquo;themes&rdquo; directory will store the themes you choose which are downloaded from the theme owner.</p>
 
-<h3 id="4-choose-your-favorite-theme">4. Choose your favorite theme.</h3>
+<h2 id="4-choose-your-favorite-theme">4. Choose your favorite theme.</h2>
 
-<p><strong>You can choose your favorite theme from <a href="https://themes.gohugo.io/">Hugo Themes</a> and <a href="http://www.gohugo.org/theme/">Chinese Hugo</a>. Please read the user manual of your themes. Most of them are put on Github and very esay to use. Then, please create a repo($YOURREPO) for your blog site on your own github.</strong></p>
+<p><a href="https://postimg.cc/NK5PP2Qr"><img src="https://i.postimg.cc/Z5ctn6gj/blog03.png" alt="blog03.png" /></a></p>
 
-<p><strong>After repo creation, please follow my script to relate your local repo to Github repo.</strong></p>
+<p><a href="https://postimg.cc/k2zhrM5Y"><img src="https://i.postimg.cc/9fQ37rH2/blog04.png" alt="blog04.png" /></a></p>
 
-<pre><code>cd $GOPATH/src/github.com/$YOURUSERNAME/$YOURREPO    \\Please replace $YOURUSERNAME and $YOURREPO mentioned before.
+<p>You can choose your favorite theme from <a href="https://themes.gohugo.io/">Hugo Themes</a> and <a href="http://www.gohugo.org/theme/">Chinese Hugo</a>. Please read the user manual of your themes carefully. Most of them are put on Github and very esay to use. Then, please create a repo($YOUR_REPO) for your blog site on your own Github.</p>
+
+<p>After repo creation, please follow my script to relate your local repo to Github repo.</p>
+
+<pre><code>cd $GOPATH/src/github.com/$YOUR_USERNAME/$YOUR_REPO
+\\ Please replace $YOUR_USERNAME and $YOUR_REPO mentioned before.
 git init
-git remote add origin https://github.com/$YOURUSERNAME/$YOURREPO.git
-git submodule add https://github.com/$THEMEOWNER/$THEME.git themes/$THEME    \\Please replace $THEMEOWNER and $THEME with the info you find within your theme on the Github. For example, you found your theme under curttimson/hugo-theme-massively. Then you will input &quot;git submodule add https://github.com/curttimson/hugo-theme-massively themes/hugo-theme-massively&quot;
+git remote add origin https://github.com/$YOUR_USERNAME/$YOUR_REPO.git
+git submodule add https://github.com/$THEME_OWNER/$THEME.git themes/$THEME
+\\ Please replace $THEME_OWNER and $THEME with the info you find within
+\\ your theme on the Github. For example, you found your theme under
+\\ curttimson/hugo-theme-massively. Then you will input &quot;git submodule
+\\ add https://github.com/curttimson/hugo-theme-massively themes/hugo-theme-massively&quot;
 </code></pre>
 
-<h3 id="5-post-your-articles">5. Post your articles.</h3>
+<h2 id="5-post-your-articles">5. Post your articles.</h2>
 
-<p><strong>You can use <code>hugo new post/$YOURARTICLE</code> command to create your article files or directly create new files on the path &ldquo;content/post&rdquo; of your site. Please notice the file should named ending with &ldquo;.md&rdquo; such as &ldquo;new.md&rdquo; etc. which means using Markdown to format your articles. Open your Markdown editor to edit your articles. Markdown is easy to use. Please google it if you have no idea. In Atom, press <code>ctrl+alt+m</code> for markdown preview.</strong></p>
+<p>You can use <code>hugo new post/$YOUR_ARTICLE</code> command to create your article files or directly create new files on the relative path &ldquo;content/post&rdquo; of your site. Please notice the file should named ending with &ldquo;.md&rdquo; such as &ldquo;new.md&rdquo; etc. which means using Markdown to format your articles. Open your Markdown editor to edit your articles. Markdown is easy to use. Please google it if you have no idea about it. In Atom, press <code>ctrl+alt+m</code> for markdown preview.</p>
 
-<p><strong>Below is the meta template in your article for your reference.</strong></p>
+<p>Below is the meta info template of articles for your reference.</p>
 
 <pre><code>---
 title: &quot;Let's make our own blogs.&quot;
@@ -179,43 +191,55 @@ author: &quot;Fred&quot;
 Here will be your article content.
 </code></pre>
 
-<h3 id="6-preview-your-website">6. Preview your website.</h3>
+<h2 id="6-preview-your-website">6. Preview your website.</h2>
 
-<p><strong>Please modify &ldquo;config.toml&rdquo; and other customized file we mentioned in 1.2 and then follow my script.</strong></p>
+<p>Please modify &ldquo;config.toml&rdquo; and other customized file I mentioned in 1.2. Configure this info <code>baseurl = &quot;https://$YOUR_USERNAME.github.io/$YOUR_REPO/&quot;</code> in your &ldquo;config.toml&rdquo; for mapping the domain of Github Page. You also need to add <code>staticDir = [&quot;static&quot;, &quot;../../static&quot;]</code> in your &ldquo;config.toml&rdquo; if you add files in &ldquo;static&rdquo; directory.</p>
 
-<p><strong><em>Notice: You need to add <code>staticDir = [&quot;static&quot;, &quot;../../static&quot;]</code> in your &ldquo;config.toml&rdquo; if you add files in &ldquo;static&rdquo; directory.</em></strong></p>
+<p>Well, let&rsquo;s go ahead.</p>
 
-<pre><code>cd $GOPATH/src/github.com/$YOURUSERNAME/$YOURREPO    \\Please replace $YOURUSERNAME and $YOURREPO mentioned before.
-hugo server    \\This will start a web service.
+<pre><code>cd $GOPATH/src/github.com/$YOUR_USERNAME/$YOUR_REPO
+\\ Please replace $YOUR_USERNAME and $YOUR_REPO mentioned before.
+hugo server
+\\ This will start a web service.
 </code></pre>
 
-<p><strong>After that, you will see something like below.</strong></p>
+<p>After that, you will see something as below.</p>
 
 <pre><code>Serving pages from memory
 Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Web Server is available at http://localhost:1313/xx/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 </code></pre>
 
-<p><strong>Please open the URL(<a href="http://localhost:1313/">http://localhost:1313/</a>) with your browser to check your website. If something wrong, please review the manual of your theme and your customized file again.</strong></p>
+<p>Please open the URL(<a href="http://localhost:1313/xx/">http://localhost:1313/xx/</a>) with your browser to check your website. If something wrong, please review the manual of your theme and your customized file again.</p>
 
-<h3 id="7-publish-it-on-github-page">7. Publish it on Github Page.</h3>
+<h2 id="7-publish-it-on-github-page">7. Publish it on Github Page.</h2>
 
-<p><strong>Please follow below script to push repo to Github.</strong></p>
+<p>Please follow the script to push repo to Github.</p>
 
-<pre><code>cd $GOPATH/src/github.com/$YOURUSERNAME/$YOURREPO    \\Please replace $YOURUSERNAME and $YOURREPO mentioned before.
-mkdir docs    \\This folder will be used by Github Page
-hugo -d ./docs    \\This will generate all static files to &quot;docs&quot; directory for your website.
+<pre><code>cd $GOPATH/src/github.com/$YOUR_USERNAME/$YOUR_REPO
+\\ Please replace $YOUR_USERNAME and $YOUR_REPO mentioned before.
+mkdir docs
+\\ This folder will be used by Github Page
+hugo -d ./docs
+\\ This will generate all static files to &quot;docs&quot; directory for your website.
 git add -A
-git commit -a -m &quot;$UPDATE&quot;    \\Please replace $UPDATE with any words for this update.
+git commit -a -m &quot;$UPDATE&quot;
+\\ Please replace $UPDATE with any words for this update.
 git push origin master
 </code></pre>
 
-<p><strong>You will see the changes on your Github repo.</strong></p>
+<p>You will see the changes on your Github repo.</p>
 
-<p><strong>Please find Github Page options under the settings tab of your repo. Select &ldquo;master branch /docs folder&rdquo; in the &ldquo;Source&rdquo; block. Then click &ldquo;Save&rdquo;. After a while, you will see the message &ldquo;Your site is published at <a href="https://haroldwo.github.io/xx/&quot;">https://haroldwo.github.io/xx/&quot;</a>. Now, you can follow the URL with you browser to see your website.</strong></p>
+<p>Please find Github Page options under the settings tab of your repo. Select &ldquo;master branch /docs folder&rdquo; in the &ldquo;Source&rdquo; block. Then click &ldquo;Save&rdquo;. After a while, you will see the message &ldquo;Your site is published at <a href="https://xx.github.io/xx/&quot;">https://xx.github.io/xx/&quot;</a>. Now, you can follow the URL with you browser to see your website.</p>
 
-<p><strong>At the next time you update your blogs, please redo 5th and 6th part of this article. Thank you for your reading.</strong></p>
+<p><img src="https://i.postimg.cc/XNHvRJTh/blog01.png" alt="blog01.png" /></p>
+
+<p><img src="https://i.postimg.cc/Ls2RYKcL/blog02.png" alt="blog02.png" /></p>
+
+<p>At the next time you update your blogs, please refer to 5th, 6th and 7th part of this article.</p>
+
+<p>Thank you for your reading.</p>
 
 	</p>
 
@@ -253,7 +277,7 @@ git push origin master
 		
 		
 		
-		<li><a href="//linkedin.com/in/%e6%99%93%e9%98%b3-%e7%8e%8b-589a3613b" target="_blank" class="icon fa-linkedin-square"><span class="label">Linkedin</span></a></li>
+		<li><a href="//linkedin.com/in/fredwo" target="_blank" class="icon fa-linkedin-square"><span class="label">Linkedin</span></a></li>
 		
 		
 		
@@ -284,6 +308,17 @@ git push origin master
 
 <script src="https://haroldwo.github.io/abablog/js/main.js"></script>
 
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-125977378-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 

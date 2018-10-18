@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on Fred&#39;s blog</title>
+    <link>https://haroldwo.github.io/abablog/tags/golang/</link>
+    <description>Recent content in Golang on Fred&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Sep 2018 12:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://haroldwo.github.io/abablog/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>An Interesting Question of Stack.</title>
+      <link>https://haroldwo.github.io/abablog/post/smallest/</link>
+      <pubDate>Sat, 22 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/smallest/</guid>
+      <description>I read an article on the internet several days ago which raised a question about stack. The question is that how to get the smallest number for the best practice when pushing data on a stack and then poping it. I try to write down it in golang. Please have a look.
+package main import &amp;quot;fmt&amp;quot; type Stack struct { source []int data []int small int } func (s *Stack) push() { for _, val := range s.</description>
+    </item>
+    
+  </channel>
+</rss>

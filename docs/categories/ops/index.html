@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+
+<!-- 
+Strata by HTML5 UP
+html5up.net | @n33co
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Ops &middot; Fred&#39;s blog</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Fred Wong">
+		<meta name="description" content="Fred&#39;s blog demo">
+		<meta http-equiv="content-language" content="en-us" />
+
+		
+		<meta name="og:site_name" content="Fred&#39;s blog">
+		<meta name="og:title" content="Ops">
+		<meta name="og:url" content="https://haroldwo.github.io/abablog/categories/ops/">
+		
+		<meta name="og:image" content="https://haroldwo.github.io/abablog/images/avatar.PNG">
+		
+		
+
+		<meta name="generator" content="Hugo 0.48" />
+
+		<!--[if lte IE 8]><script src='https://haroldwo.github.io/abablog/js/ie/html5shiv.js'></script><![endif]-->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://haroldwo.github.io/abablog/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="https://haroldwo.github.io/abablog//css/ie8.css"><![endif]-->
+
+		
+		<link href="https://haroldwo.github.io/abablog/categories/ops/index.xml" rel="alternate" type="application/rss+xml" title="Fred&#39;s blog" />
+		<link href="https://haroldwo.github.io/abablog/categories/ops/index.xml" rel="feed" type="application/rss+xml" title="Fred&#39;s blog" />
+		
+		
+	</head>
+
+	<body id="top">
+		<!-- Header -->
+<header id="header">
+	
+	<a href="https://haroldwo.github.io/abablog/" class="image avatar"><img src="https://haroldwo.github.io/abablog/images/avatar.PNG" alt="" /></a>
+	
+	
+		<h1><strong>Hi! I&rsquo;m Fred Wong,</strong><br> an Open Source technophile.<br> This is my site. Enjoy!</h1>
+	
+
+	
+		<nav id="sidebar">
+			<ul>
+			
+				<li><a href="https://haroldwo.github.io/abablog/">Home</a></li>
+			
+				<li><a href="https://haroldwo.github.io/abablog/post/">Blog</a></li>
+			
+			</ul>
+		</nav>
+	
+</header>
+
+
+		<!-- Main -->
+		<div id="main">
+			
+    
+
+    
+    
+        <span>
+    <h1>
+        <a href="https://haroldwo.github.io/abablog/post/ceph/">Note of Ceph</a>
+    </h1>
+
+    <i class="fa fa-calendar"></i>&nbsp;&nbsp;
+<time datetime="2018-10-16 12:00:00 &#43;0800 &#43;0800">2018-10-16</time>&nbsp;&nbsp;
+
+1 min read&nbsp;&nbsp;
+
+
+    
+    
+        <i class="fa fa-folder"></i>&nbsp;&nbsp;
+        
+        <a class="article-category-link" href="https://haroldwo.github.io/abablog/categories/ops">Ops</a>
+        
+        
+    
+
+
+
+   
+   
+       &nbsp;&nbsp;<i class="fa fa-tags"></i>&nbsp;&nbsp;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/ceph">ceph</a>
+       
+       
+   
+
+
+</span>
+
+<p>1. Basic Knowledge The note I collected is as below. Not all of the Ceph knowledge is involving in this note. I use it just for review. I will update it aperiodically.
+ 2. Deployment The official documents has involved complete process for deployment. I just write some notes here during my deployment.
+ Updating kernel is necessary for Ceph. For now, kernel version 4.9 and 4.14 is recommmanded according to the official suggestion, or new CRUSH feature cannot be applied.</p>
+<hr>
+
+    
+        <span>
+    <h1>
+        <a href="https://haroldwo.github.io/abablog/post/rabbitmq/">Note of RabbitMQ</a>
+    </h1>
+
+    <i class="fa fa-calendar"></i>&nbsp;&nbsp;
+<time datetime="2018-10-06 12:00:00 &#43;0800 &#43;0800">2018-10-06</time>&nbsp;&nbsp;
+
+3 min read&nbsp;&nbsp;
+
+
+    
+    
+        <i class="fa fa-folder"></i>&nbsp;&nbsp;
+        
+        <a class="article-category-link" href="https://haroldwo.github.io/abablog/categories/ops">Ops</a>
+        
+        
+    
+
+
+
+   
+   
+       &nbsp;&nbsp;<i class="fa fa-tags"></i>&nbsp;&nbsp;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/rabbitmq">rabbitmq</a>
+       &middot;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/prometheus">prometheus</a>
+       
+       
+   
+
+
+</span>
+
+<p>1. Basic process I made a flowchart of basic process of RabbitMQ as following.
+
+Normally, we will use acknowledgements and confirms during the delivery except that lose of messages is accepted in specified scenarios.
+Here comes a normal process of clients use.
+a. Producer
+ Build connection with server. Open a server channel to process the bulk of AMQP messages. Declare an exchange on the server. Send a Publishing from the client to an exchange on the server with routing key.</p>
+<hr>
+
+    
+        <span>
+    <h1>
+        <a href="https://haroldwo.github.io/abablog/post/redis/">Note of Redis(ver zh-CN)</a>
+    </h1>
+
+    <i class="fa fa-calendar"></i>&nbsp;&nbsp;
+<time datetime="2018-09-28 12:00:00 &#43;0800 &#43;0800">2018-09-28</time>&nbsp;&nbsp;
+
+4 min read&nbsp;&nbsp;
+
+
+    
+    
+        <i class="fa fa-folder"></i>&nbsp;&nbsp;
+        
+        <a class="article-category-link" href="https://haroldwo.github.io/abablog/categories/ops">Ops</a>
+        
+        
+    
+
+
+
+   
+   
+       &nbsp;&nbsp;<i class="fa fa-tags"></i>&nbsp;&nbsp;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/redis">redis</a>
+       &middot;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/zh-cn">zh-CN</a>
+       &middot;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/prometheus">prometheus</a>
+       
+       
+   
+
+
+</span>
+
+<p>Notice: I will write an article in Chinese if the info I collected is translated well in Chinese.
+注意事项：如果我收集的资料已经被很好地翻译成了中文，那我会使用中文写这篇文章。
+1. 一些笔记 内容较多，请耐心等待加载。
+ 以上是我收集的关于Redis的一些简要笔记，内容可以拖拽，放大和缩小。以上笔记没有涵盖所有官方的知识点，只作为复习时的索引使用。我会不定期更新笔记并放入博客中。
+我推荐使用Redis Cluster作为高可用的分布式集群方案。当然你也可以使用Sentinel，两者都是优秀的集群方案。但是有几点需要注意：
+ Redis的数据复制是异步的，无论哪种高可用方案都可能在故障转移中丢失极少量数据。 Redis不适合放置于虚拟化平台中，性能将有大幅度下降。 不建议把Redis部署在K8S中。容器的特性和AOF的错误恢复无法兼容，而容器的通信方式也会对Redis节点间通信产生影响。如果愿意采坑填坑的话，请记得应用在SLA较低的场景下。 关闭Swap或禁止Redis使用Swap。并在配置文件中设置合理的内存上限。同时，选择最符合场景的淘汰算法。 在CoW备份时，内存使用将有可能达到两倍。 订阅和发布不支持持久化。 避免将日志放到远程文件系统。 注意运行Redis的用户在系统中最大的文件句柄获得数(fs.file-max)和配置的maxclient是否匹配。 确定ntp同步。  2. 部署Redis Cluster 先安装Redis，这里是一个双节点，每节点三个实例的集群。以下脚本结合了一些优化，仅做参考，请根据场景自定义。目前在Ansible Galaxy上没看到合适的role，打算写一个做成双节点和六节点两个模式的role，但一直没时间。另外，如果在K8S部署，推荐使用helm，但是请关注他使用的集群方式以及是否是stateful set。前一段时间看，还是没有适合的有状态集群部署模板。无状态是没问题的。
+Redis的配置文件中的每一项都解释得非常清楚。这个赞一下。
+ 在每个节点部署服务  # CentOS Linux release 7.3 # 可以自定义以下变量 redis_version=stable redis_port=(6379 6380 6381) redis_password=fred localhost=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d &quot;addr:&quot;) sudo yum -y install gcc wget tcl ntp sudo systemctl start ntpd sudo ntpdate time.</p>
+<hr>
+
+    
+        <span>
+    <h1>
+        <a href="https://haroldwo.github.io/abablog/post/cobbler/">Deploy Ansible With Cobbler.</a>
+    </h1>
+
+    <i class="fa fa-calendar"></i>&nbsp;&nbsp;
+<time datetime="2018-09-25 12:00:00 &#43;0800 &#43;0800">2018-09-25</time>&nbsp;&nbsp;
+
+6 min read&nbsp;&nbsp;
+
+
+    
+    
+        <i class="fa fa-folder"></i>&nbsp;&nbsp;
+        
+        <a class="article-category-link" href="https://haroldwo.github.io/abablog/categories/ops">Ops</a>
+        
+        
+    
+
+
+
+   
+   
+       &nbsp;&nbsp;<i class="fa fa-tags"></i>&nbsp;&nbsp;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/cobbler">cobbler</a>
+       &middot;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/ansible">ansible</a>
+       
+       
+   
+
+
+</span>
+
+<p>1. Scenario. How about to use a light application for IaaS. As we all know, the platform like OpenStack is awesome but too heavy. For small business, we always do not create a complex architecture. Since Kubernetes(K8S) appears, we give more scope to it in IaaS. Now, I can use Cobbler and Ansible to manage some part of IaaS. They are much simpler than other platform such as OpenStack, Rancher, Vmware and so on, which can also be a good choice.</p>
+<hr>
+
+    
+
+    
+
+
+		</div>
+
+		<!-- Footer -->
+<footer id="footer">
+	<ul class="icons">
+		
+		
+		
+		
+		<li><a href="//github.com/haroldwo" target="_blank" class="icon fa-github"><span class="label">GitHub</span></a></li>
+		
+		
+		
+		<li><a href="//linkedin.com/in/fredwo" target="_blank" class="icon fa-linkedin-square"><span class="label">Linkedin</span></a></li>
+		
+		
+		
+		
+		<li><a href="https://haroldwo.github.io/abablog/#contact-form" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+		
+		
+		<li><a href="https://haroldwo.github.io/abablog/categories/ops/index.xml" class="icon fa-rss" type="application/rss+xml"><span class="label">RSS</span></a></li>
+		
+	</ul>
+
+	<ul class="copyright">
+		
+		<li>&copy; John Doe</li>
+		
+		<li>Design: <a href="//html5up.net">HTML5 UP</a></li>
+		
+		<li>Images: <a href="//unsplash.com/">Unsplash</a></li>
+		
+	</ul>
+</footer>
+
+<!-- Scripts -->
+<script src="https://haroldwo.github.io/abablog/js/jquery.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/jquery.poptrox.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/skel.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/util.js"></script>
+
+<script src="https://haroldwo.github.io/abablog/js/main.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-125977378-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+	</body>
+</html>

@@ -6,18 +6,117 @@
     <description>Recent content on Fred&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Sep 2018 12:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 22 Sep 2018 12:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://haroldwo.github.io/abablog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Let&#39;s make our own blogs.</title>
+      <title>An Interesting Question of Stack.</title>
+      <link>https://haroldwo.github.io/abablog/post/smallest/</link>
+      <pubDate>Sat, 22 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/smallest/</guid>
+      <description>I read an article on the internet several days ago which raised a question about stack. The question is that how to get the smallest number for the best practice when pushing data on a stack and then poping it. I try to write down it in golang. Please have a look.
+package main import &amp;quot;fmt&amp;quot; type Stack struct { source []int data []int small int } func (s *Stack) push() { for _, val := range s.</description>
+    </item>
+    
+    <item>
+      <title>Write a Simple Crawler.</title>
+      <link>https://haroldwo.github.io/abablog/post/crawler/</link>
+      <pubDate>Thu, 20 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/crawler/</guid>
+      <description>1. Basic process. HTTP request -&amp;gt; Web -&amp;gt; HTTP response -&amp;gt; Parse data -&amp;gt; Handle data This is the basic process of a crawler program. I will not talk about concurrency or distributed framework here. This article aim to give a simple introduction of crawler.
+A crawler actually is a script which execute simulation of our action very fast when we browse a web page and it follows some rules we designed for catching our data.</description>
+    </item>
+    
+    <item>
+      <title>Note of Ceph</title>
+      <link>https://haroldwo.github.io/abablog/post/ceph/</link>
+      <pubDate>Tue, 16 Oct 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/ceph/</guid>
+      <description>1. Basic Knowledge The note I collected is as below. Not all of the Ceph knowledge is involving in this note. I use it just for review. I will update it aperiodically.
+ 2. Deployment The official documents has involved complete process for deployment. I just write some notes here during my deployment.
+ Updating kernel is necessary for Ceph. For now, kernel version 4.9 and 4.14 is recommmanded according to the official suggestion, or new CRUSH feature cannot be applied.</description>
+    </item>
+    
+    <item>
+      <title>Note of RabbitMQ</title>
+      <link>https://haroldwo.github.io/abablog/post/rabbitmq/</link>
+      <pubDate>Sat, 06 Oct 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/rabbitmq/</guid>
+      <description>1. Basic process I made a flowchart of basic process of RabbitMQ as following.
+
+Normally, we will use acknowledgements and confirms during the delivery except that lose of messages is accepted in specified scenarios.
+Here comes a normal process of clients use.
+a. Producer
+ Build connection with server. Open a server channel to process the bulk of AMQP messages. Declare an exchange on the server. Send a Publishing from the client to an exchange on the server with routing key.</description>
+    </item>
+    
+    <item>
+      <title>Note of Redis(ver zh-CN)</title>
+      <link>https://haroldwo.github.io/abablog/post/redis/</link>
+      <pubDate>Fri, 28 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/redis/</guid>
+      <description>Notice: I will write an article in Chinese if the info I collected is translated well in Chinese.
+注意事项：如果我收集的资料已经被很好地翻译成了中文，那我会使用中文写这篇文章。
+1. 一些笔记 内容较多，请耐心等待加载。
+ 以上是我收集的关于Redis的一些简要笔记，内容可以拖拽，放大和缩小。以上笔记没有涵盖所有官方的知识点，只作为复习时的索引使用。我会不定期更新笔记并放入博客中。
+我推荐使用Redis Cluster作为高可用的分布式集群方案。当然你也可以使用Sentinel，两者都是优秀的集群方案。但是有几点需要注意：
+ Redis的数据复制是异步的，无论哪种高可用方案都可能在故障转移中丢失极少量数据。 Redis不适合放置于虚拟化平台中，性能将有大幅度下降。 不建议把Redis部署在K8S中。容器的特性和AOF的错误恢复无法兼容，而容器的通信方式也会对Redis节点间通信产生影响。如果愿意采坑填坑的话，请记得应用在SLA较低的场景下。 关闭Swap或禁止Redis使用Swap。并在配置文件中设置合理的内存上限。同时，选择最符合场景的淘汰算法。 在CoW备份时，内存使用将有可能达到两倍。 订阅和发布不支持持久化。 避免将日志放到远程文件系统。 注意运行Redis的用户在系统中最大的文件句柄获得数(fs.file-max)和配置的maxclient是否匹配。 确定ntp同步。  2. 部署Redis Cluster 先安装Redis，这里是一个双节点，每节点三个实例的集群。以下脚本结合了一些优化，仅做参考，请根据场景自定义。目前在Ansible Galaxy上没看到合适的role，打算写一个做成双节点和六节点两个模式的role，但一直没时间。另外，如果在K8S部署，推荐使用helm，但是请关注他使用的集群方式以及是否是stateful set。前一段时间看，还是没有适合的有状态集群部署模板。无状态是没问题的。
+Redis的配置文件中的每一项都解释得非常清楚。这个赞一下。
+ 在每个节点部署服务  # CentOS Linux release 7.3 # 可以自定义以下变量 redis_version=stable redis_port=(6379 6380 6381) redis_password=fred localhost=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk &#39;{print $2}&#39;|tr -d &amp;quot;addr:&amp;quot;) sudo yum -y install gcc wget tcl ntp sudo systemctl start ntpd sudo ntpdate time.</description>
+    </item>
+    
+    <item>
+      <title>Deploy Ansible With Cobbler.</title>
+      <link>https://haroldwo.github.io/abablog/post/cobbler/</link>
+      <pubDate>Tue, 25 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/cobbler/</guid>
+      <description>1. Scenario. How about to use a light application for IaaS. As we all know, the platform like OpenStack is awesome but too heavy. For small business, we always do not create a complex architecture. Since Kubernetes(K8S) appears, we give more scope to it in IaaS. Now, I can use Cobbler and Ansible to manage some part of IaaS. They are much simpler than other platform such as OpenStack, Rancher, Vmware and so on, which can also be a good choice.</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Make Our Own Blogs.</title>
       <link>https://haroldwo.github.io/abablog/post/blog/</link>
       <pubDate>Tue, 18 Sep 2018 12:00:00 +0800</pubDate>
       
       <guid>https://haroldwo.github.io/abablog/post/blog/</guid>
-      <description>1. Blog. Nowadays, when we want to create a blog website, we don&amp;rsquo;t need to write so much codes of front end, back-end or even set up resources for the website. Thanks to our Open source community. At all times, we can use many blog engines for setting our own blogs, which is a very convenient way to make it done. This article will show you some basic process to complete this task.</description>
+      <description>1. Blog. Nowadays, we don&amp;rsquo;t have to write so much codes of front end, back-end or even set up resources for building a blog website. Thanks to our Open Source community, we can use many blog engines for setting our own blogs at all times, which is a very convenient way to make it done. This article will show you a basic process to complete this task.
+There are several engines you can use for your blog such as Jekyll, Octopress, Hexo and so on.</description>
+    </item>
+    
+    <item>
+      <title>Make Blog Posting as a Simple Continuous Delivery.</title>
+      <link>https://haroldwo.github.io/abablog/post/blog-ci/</link>
+      <pubDate>Wed, 19 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/blog-ci/</guid>
+      <description>1. Continuous Delivery. What is CD? Please look into Wiki CD. We can see our blog posting as a delivery every time we push our repo to GitHub, which can be used as CI/CD process. Well, Let me describe it simpler. Do you remember that I need to run hugo -d ./docs each time I doing my posting? This command means generating code from your local repo by Hugo. Only &amp;ldquo;docs&amp;rdquo; directory will be used as your website.</description>
+    </item>
+    
+    <item>
+      <title>4 Principles of Critical Thinking.</title>
+      <link>https://haroldwo.github.io/abablog/post/thinking/</link>
+      <pubDate>Wed, 19 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/thinking/</guid>
+      <description>1. A &amp;ldquo;truth&amp;rdquo; which can be accept without experiment does not exist. A person can have his own religious belief and values which no need to be proved to be true or not but most of thought and views need to be justified with logical inference and evidence. 2. It is crucial to judge the quality of the evidence. If you are a juror in the court and you need to judge the statements which spoke out by both sides of lawyers measure for measure, at this moment, you cannot directly compare the number of evidence from both sides but evaluate the quality of evidence critically before give the bigger weight to the more faithful evidence.</description>
+    </item>
+    
+    <item>
+      <title>Note of *Justice With Michael Sandel*.</title>
+      <link>https://haroldwo.github.io/abablog/post/justice/</link>
+      <pubDate>Wed, 19 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/justice/</guid>
+      <description>1. Course 1 Consequentialist moral reasoning locates morality in the consequences of an act in the state of the rule that we resolve from the thing you do. Categorical moral reasoning locates morality in certain absolute moral requirements, certain categorical duties and rights, regardless the consequences.
+Once the familiar turns strange, it&amp;rsquo;s never quite the same again. Self knowledge is like a lost innocent. However unsettling you find it, you can never be unthought or unknown.</description>
     </item>
     
   </channel>

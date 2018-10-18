@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ceph on Fred&#39;s blog</title>
+    <link>https://haroldwo.github.io/abablog/tags/ceph/</link>
+    <description>Recent content in Ceph on Fred&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Oct 2018 12:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://haroldwo.github.io/abablog/tags/ceph/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Note of Ceph</title>
+      <link>https://haroldwo.github.io/abablog/post/ceph/</link>
+      <pubDate>Tue, 16 Oct 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/ceph/</guid>
+      <description>1. Basic Knowledge The note I collected is as below. Not all of the Ceph knowledge is involving in this note. I use it just for review. I will update it aperiodically.
+ 2. Deployment The official documents has involved complete process for deployment. I just write some notes here during my deployment.
+ Updating kernel is necessary for Ceph. For now, kernel version 4.9 and 4.14 is recommmanded according to the official suggestion, or new CRUSH feature cannot be applied.</description>
+    </item>
+    
+  </channel>
+</rss>

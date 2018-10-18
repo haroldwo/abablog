@@ -12,12 +12,13 @@
     
     
     <item>
-      <title>Let&#39;s make our own blogs.</title>
+      <title>Let&#39;s Make Our Own Blogs.</title>
       <link>https://haroldwo.github.io/abablog/post/blog/</link>
       <pubDate>Tue, 18 Sep 2018 12:00:00 +0800</pubDate>
       
       <guid>https://haroldwo.github.io/abablog/post/blog/</guid>
-      <description>1. Blog. Nowadays, when we want to create a blog website, we don&amp;rsquo;t need to write so much codes of front end, back-end or even set up resources for the website. Thanks to our Open source community. At all times, we can use many blog engines for setting our own blogs, which is a very convenient way to make it done. This article will show you some basic process to complete this task.</description>
+      <description>1. Blog. Nowadays, we don&amp;rsquo;t have to write so much codes of front end, back-end or even set up resources for building a blog website. Thanks to our Open Source community, we can use many blog engines for setting our own blogs at all times, which is a very convenient way to make it done. This article will show you a basic process to complete this task.
+There are several engines you can use for your blog such as Jekyll, Octopress, Hexo and so on.</description>
     </item>
     
   </channel>

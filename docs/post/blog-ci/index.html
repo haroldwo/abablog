@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+
+<!-- 
+Strata by HTML5 UP
+html5up.net | @n33co
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Make Blog Posting as a Simple Continuous Delivery. &middot; Fred&#39;s blog</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Fred Wong">
+		<meta name="description" content="Fred&#39;s blog demo">
+		<meta http-equiv="content-language" content="en-us" />
+
+		
+		<meta name="og:site_name" content="Fred&#39;s blog">
+		<meta name="og:title" content="Make Blog Posting as a Simple Continuous Delivery.">
+		<meta name="og:url" content="https://haroldwo.github.io/abablog/post/blog-ci/">
+		
+		<meta name="og:image" content="https://haroldwo.github.io/abablog/images/avatar.PNG">
+		
+		
+
+		<meta name="generator" content="Hugo 0.48" />
+
+		<!--[if lte IE 8]><script src='https://haroldwo.github.io/abablog/js/ie/html5shiv.js'></script><![endif]-->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://haroldwo.github.io/abablog/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="https://haroldwo.github.io/abablog//css/ie8.css"><![endif]-->
+
+		
+		
+	</head>
+
+	<body id="top">
+		<!-- Header -->
+<header id="header">
+	
+	<a href="https://haroldwo.github.io/abablog/" class="image avatar"><img src="https://haroldwo.github.io/abablog/images/avatar.PNG" alt="" /></a>
+	
+	
+		<h1><strong>Hi! I&rsquo;m Fred Wong,</strong><br> an Open Source technophile.<br> This is my site. Enjoy!</h1>
+	
+
+	
+		<nav id="sidebar">
+			<ul>
+			
+				<li><a href="https://haroldwo.github.io/abablog/">Home</a></li>
+			
+				<li><a href="https://haroldwo.github.io/abablog/post/">Blog</a></li>
+			
+			</ul>
+		</nav>
+	
+</header>
+
+
+		<!-- Main -->
+		<div id="main">
+			
+	<span>
+		<h1>Make Blog Posting as a Simple Continuous Delivery.</h1>
+
+		<i class="fa fa-calendar"></i>&nbsp;&nbsp;
+<time datetime="2018-09-19 12:00:00 &#43;0800 &#43;0800">2018-09-19</time>&nbsp;&nbsp;
+
+3 min read&nbsp;&nbsp;
+
+
+    
+    
+        <i class="fa fa-folder"></i>&nbsp;&nbsp;
+        
+        <a class="article-category-link" href="https://haroldwo.github.io/abablog/categories/other">Other</a>
+        
+        
+    
+
+
+
+   
+   
+       &nbsp;&nbsp;<i class="fa fa-tags"></i>&nbsp;&nbsp;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/travis">Travis</a>
+       
+       
+   
+
+
+	</span>
+
+	<p>
+	    
+
+<h2 id="1-continuous-delivery">1. Continuous Delivery.</h2>
+
+<p>What is CD? Please look into <a href="https://en.wikipedia.org/wiki/Continuous_delivery">Wiki CD</a>.
+We can see our blog posting as a delivery every time we push our repo to GitHub, which can be used as CI/CD process. Well, Let me describe it simpler. Do you remember that I need to run <code>hugo -d ./docs</code> each time I doing my posting? This command means generating code from your local repo by Hugo. Only &ldquo;docs&rdquo; directory will be used as your website. Now, I try not to do this locally. I need something to do generating for us and then send us a report that the generating is ok or not. The only thing I need to do is push my repo to Github and wait for the report. Here, I need to explain that &ldquo;generating&rdquo; I said is actually a very complex part in a complete process of CI/CD for development. This article aims to give you a sense of CI/CD so that you can decouple your regular development process.</p>
+
+<p>Notice: This process is actually not necessary for blog posting.</p>
+
+<h2 id="2-ci-service">2. CI service.</h2>
+
+<p>I choose Travis CI here for our Github repo. Travis CI is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub. It is a public platform and for free for personal. Please read <a href="https://docs.travis-ci.com/user/getting-started#to-get-started-with-travis-ci">Travis CI</a>  to get start.</p>
+
+<p>Also, you can deploy your own CI serivce locally such as Jenkins which will be introduced in another article.</p>
+
+<h2 id="3-configuration">3. Configuration</h2>
+
+<h3 id="3-1-generate-a-github-access-token">3.1 Generate a Github Access Token</h3>
+
+<p>Please generate a new token through <a href="https://github.com/settings/tokens/new">this link</a> in your Github. Input &ldquo;Travis&rdquo; or any words in the description blank and tick &ldquo;public_repo&rdquo;. Then click &ldquo;Generate token&rdquo; at the end of this page. Please note the token info which will be used in Travis CI.</p>
+
+<p><a href="https://postimg.cc/PPQjkRvn"><img src="https://i.postimg.cc/L6r6jdH5/blog-_CI01.jpg" alt="blog-_CI01.jpg" /></a></p>
+
+<h3 id="3-2-configure-travis-ci">3.2 Configure Travis CI</h3>
+
+<p>Please login Travis CI with your Github account and then sync your account and enable your repo.</p>
+
+<p>Click &ldquo;settings&rdquo; on the right side.</p>
+
+<p><a href="https://postimg.cc/Z0cSGQdt"><img src="https://i.postimg.cc/L6d81K4X/blog-_CI02.png" alt="blog-_CI02.png" /></a></p>
+
+<p>Please input &ldquo;GITHUB_TOKEN&rdquo; in &ldquo;1&rdquo; and your token info in &ldquo;2&rdquo;. Then, click &ldquo;Add&rdquo; on the right side.</p>
+
+<p><a href="https://postimg.cc/cg0zTsTK"><img src="https://i.postimg.cc/TwDXd1Dc/blog-_CI03.png" alt="blog-_CI03.png" /></a></p>
+
+<h3 id="3-3-create-travis-yml">3.3 Create .travis.yml</h3>
+
+<p>Please create a file named .travis.yml in your repo as below.</p>
+
+<p><a href="https://postimg.cc/c6J9JkzN"><img src="https://i.postimg.cc/05YLcLdr/blog-_CI04.png" alt="blog-_CI04.png" /></a></p>
+
+<p>Here is the content for your reference. You can directly use it.</p>
+
+<pre><code>sudo: false
+language: go
+git:
+    depth: 1
+install:
+    - wget https://github.com/gohugoio/hugo/releases/download/v0.48/hugo_0.48_Linux-64bit.tar.gz
+    - tar zxvf hugo_0.48_Linux-64bit.tar.gz hugo
+script: ./hugo -d ./docs
+after_success:
+    - rm hugo*
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    keep-history: true
+    on:
+        branch: master
+    target_branch: master
+</code></pre>
+
+<p>You can customize the life cycle of your build. Please look into <a href="https://docs.travis-ci.com/user/customizing-the-build/">Travis CI Docs</a></p>
+
+<h2 id="4-trigger-travis-ci">4. Trigger Travis CI</h2>
+
+<p>Now, Travis CI will automatically build your code and update your repo every time you push your repo to Github. You will receive an email for the build info. You can also see the process log on your Travis CI page.</p>
+
+<p><a href="https://postimg.cc/WqjXTSxh"><img src="https://i.postimg.cc/rsRbGPJC/blog-_CI05.png" alt="blog-_CI05.png" /></a></p>
+
+<p>Thank you for your reading.</p>
+
+	</p>
+
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "haroldwo" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+		</div>
+
+		<!-- Footer -->
+<footer id="footer">
+	<ul class="icons">
+		
+		
+		
+		
+		<li><a href="//github.com/haroldwo" target="_blank" class="icon fa-github"><span class="label">GitHub</span></a></li>
+		
+		
+		
+		<li><a href="//linkedin.com/in/fredwo" target="_blank" class="icon fa-linkedin-square"><span class="label">Linkedin</span></a></li>
+		
+		
+		
+		
+		<li><a href="https://haroldwo.github.io/abablog/#contact-form" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+		
+		
+		<li><a href="https://haroldwo.github.io/abablog/index.xml" class="icon fa-rss" type="application/rss+xml"><span class="label">RSS</span></a></li>
+		
+	</ul>
+
+	<ul class="copyright">
+		
+		<li>&copy; John Doe</li>
+		
+		<li>Design: <a href="//html5up.net">HTML5 UP</a></li>
+		
+		<li>Images: <a href="//unsplash.com/">Unsplash</a></li>
+		
+	</ul>
+</footer>
+
+<!-- Scripts -->
+<script src="https://haroldwo.github.io/abablog/js/jquery.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/jquery.poptrox.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/skel.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/util.js"></script>
+
+<script src="https://haroldwo.github.io/abablog/js/main.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-125977378-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+	</body>
+</html>

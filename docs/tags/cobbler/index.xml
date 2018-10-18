@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cobbler on Fred&#39;s blog</title>
+    <link>https://haroldwo.github.io/abablog/tags/cobbler/</link>
+    <description>Recent content in Cobbler on Fred&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Sep 2018 12:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://haroldwo.github.io/abablog/tags/cobbler/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deploy Ansible With Cobbler.</title>
+      <link>https://haroldwo.github.io/abablog/post/cobbler/</link>
+      <pubDate>Tue, 25 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/cobbler/</guid>
+      <description>1. Scenario. How about to use a light application for IaaS. As we all know, the platform like OpenStack is awesome but too heavy. For small business, we always do not create a complex architecture. Since Kubernetes(K8S) appears, we give more scope to it in IaaS. Now, I can use Cobbler and Ansible to manage some part of IaaS. They are much simpler than other platform such as OpenStack, Rancher, Vmware and so on, which can also be a good choice.</description>
+    </item>
+    
+  </channel>
+</rss>

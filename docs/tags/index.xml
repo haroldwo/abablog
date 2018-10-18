@@ -6,10 +6,64 @@
     <description>Recent content in Tags on Fred&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Sep 2018 12:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Sep 2018 12:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://haroldwo.github.io/abablog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ansible</title>
+      <link>https://haroldwo.github.io/abablog/tags/ansible/</link>
+      <pubDate>Tue, 25 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ceph</title>
+      <link>https://haroldwo.github.io/abablog/tags/ceph/</link>
+      <pubDate>Tue, 16 Oct 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/ceph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cobbler</title>
+      <link>https://haroldwo.github.io/abablog/tags/cobbler/</link>
+      <pubDate>Tue, 25 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/cobbler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Crawler</title>
+      <link>https://haroldwo.github.io/abablog/tags/crawler/</link>
+      <pubDate>Thu, 20 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/crawler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://haroldwo.github.io/abablog/tags/golang/</link>
+      <pubDate>Sat, 22 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Goquery</title>
+      <link>https://haroldwo.github.io/abablog/tags/goquery/</link>
+      <pubDate>Thu, 20 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/goquery/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Hugo</title>
@@ -17,6 +71,60 @@
       <pubDate>Tue, 18 Sep 2018 12:00:00 +0800</pubDate>
       
       <guid>https://haroldwo.github.io/abablog/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Prometheus</title>
+      <link>https://haroldwo.github.io/abablog/tags/prometheus/</link>
+      <pubDate>Sat, 06 Oct 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rabbitmq</title>
+      <link>https://haroldwo.github.io/abablog/tags/rabbitmq/</link>
+      <pubDate>Sat, 06 Oct 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/rabbitmq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://haroldwo.github.io/abablog/tags/redis/</link>
+      <pubDate>Fri, 28 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Thinking</title>
+      <link>https://haroldwo.github.io/abablog/tags/thinking/</link>
+      <pubDate>Wed, 19 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/thinking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Travis</title>
+      <link>https://haroldwo.github.io/abablog/tags/travis/</link>
+      <pubDate>Wed, 19 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/travis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zh Cn</title>
+      <link>https://haroldwo.github.io/abablog/tags/zh-cn/</link>
+      <pubDate>Fri, 28 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/tags/zh-cn/</guid>
       <description></description>
     </item>
     

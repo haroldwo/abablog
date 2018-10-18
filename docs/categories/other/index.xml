@@ -12,12 +12,41 @@
     
     
     <item>
-      <title>Let&#39;s make our own blogs.</title>
+      <title>Let&#39;s Make Our Own Blogs.</title>
       <link>https://haroldwo.github.io/abablog/post/blog/</link>
       <pubDate>Tue, 18 Sep 2018 12:00:00 +0800</pubDate>
       
       <guid>https://haroldwo.github.io/abablog/post/blog/</guid>
-      <description>1. Blog. Nowadays, when we want to create a blog website, we don&amp;rsquo;t need to write so much codes of front end, back-end or even set up resources for the website. Thanks to our Open source community. At all times, we can use many blog engines for setting our own blogs, which is a very convenient way to make it done. This article will show you some basic process to complete this task.</description>
+      <description>1. Blog. Nowadays, we don&amp;rsquo;t have to write so much codes of front end, back-end or even set up resources for building a blog website. Thanks to our Open Source community, we can use many blog engines for setting our own blogs at all times, which is a very convenient way to make it done. This article will show you a basic process to complete this task.
+There are several engines you can use for your blog such as Jekyll, Octopress, Hexo and so on.</description>
+    </item>
+    
+    <item>
+      <title>4 Principles of Critical Thinking.</title>
+      <link>https://haroldwo.github.io/abablog/post/thinking/</link>
+      <pubDate>Wed, 19 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/thinking/</guid>
+      <description>1. A &amp;ldquo;truth&amp;rdquo; which can be accept without experiment does not exist. A person can have his own religious belief and values which no need to be proved to be true or not but most of thought and views need to be justified with logical inference and evidence. 2. It is crucial to judge the quality of the evidence. If you are a juror in the court and you need to judge the statements which spoke out by both sides of lawyers measure for measure, at this moment, you cannot directly compare the number of evidence from both sides but evaluate the quality of evidence critically before give the bigger weight to the more faithful evidence.</description>
+    </item>
+    
+    <item>
+      <title>Make Blog Posting as a Simple Continuous Delivery.</title>
+      <link>https://haroldwo.github.io/abablog/post/blog-ci/</link>
+      <pubDate>Wed, 19 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/blog-ci/</guid>
+      <description>1. Continuous Delivery. What is CD? Please look into Wiki CD. We can see our blog posting as a delivery every time we push our repo to GitHub, which can be used as CI/CD process. Well, Let me describe it simpler. Do you remember that I need to run hugo -d ./docs each time I doing my posting? This command means generating code from your local repo by Hugo. Only &amp;ldquo;docs&amp;rdquo; directory will be used as your website.</description>
+    </item>
+    
+    <item>
+      <title>Note of *Justice With Michael Sandel*.</title>
+      <link>https://haroldwo.github.io/abablog/post/justice/</link>
+      <pubDate>Wed, 19 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/justice/</guid>
+      <description>1. Course 1 Consequentialist moral reasoning locates morality in the consequences of an act in the state of the rule that we resolve from the thing you do. Categorical moral reasoning locates morality in certain absolute moral requirements, certain categorical duties and rights, regardless the consequences.
+Once the familiar turns strange, it&amp;rsquo;s never quite the same again. Self knowledge is like a lost innocent. However unsettling you find it, you can never be unthought or unknown.</description>
     </item>
     
   </channel>

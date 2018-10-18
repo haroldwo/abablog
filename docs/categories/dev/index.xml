@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dev on Fred&#39;s blog</title>
+    <link>https://haroldwo.github.io/abablog/categories/dev/</link>
+    <description>Recent content in Dev on Fred&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Sep 2018 12:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://haroldwo.github.io/abablog/categories/dev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>An Interesting Question of Stack.</title>
+      <link>https://haroldwo.github.io/abablog/post/smallest/</link>
+      <pubDate>Sat, 22 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/smallest/</guid>
+      <description>I read an article on the internet several days ago which raised a question about stack. The question is that how to get the smallest number for the best practice when pushing data on a stack and then poping it. I try to write down it in golang. Please have a look.
+package main import &amp;quot;fmt&amp;quot; type Stack struct { source []int data []int small int } func (s *Stack) push() { for _, val := range s.</description>
+    </item>
+    
+    <item>
+      <title>Write a Simple Crawler.</title>
+      <link>https://haroldwo.github.io/abablog/post/crawler/</link>
+      <pubDate>Thu, 20 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/crawler/</guid>
+      <description>1. Basic process. HTTP request -&amp;gt; Web -&amp;gt; HTTP response -&amp;gt; Parse data -&amp;gt; Handle data This is the basic process of a crawler program. I will not talk about concurrency or distributed framework here. This article aim to give a simple introduction of crawler.
+A crawler actually is a script which execute simulation of our action very fast when we browse a web page and it follows some rules we designed for catching our data.</description>
+    </item>
+    
+  </channel>
+</rss>

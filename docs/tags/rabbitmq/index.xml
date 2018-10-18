@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rabbitmq on Fred&#39;s blog</title>
+    <link>https://haroldwo.github.io/abablog/tags/rabbitmq/</link>
+    <description>Recent content in Rabbitmq on Fred&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Oct 2018 12:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://haroldwo.github.io/abablog/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Note of RabbitMQ</title>
+      <link>https://haroldwo.github.io/abablog/post/rabbitmq/</link>
+      <pubDate>Sat, 06 Oct 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/rabbitmq/</guid>
+      <description>1. Basic process I made a flowchart of basic process of RabbitMQ as following.
+
+Normally, we will use acknowledgements and confirms during the delivery except that lose of messages is accepted in specified scenarios.
+Here comes a normal process of clients use.
+a. Producer
+ Build connection with server. Open a server channel to process the bulk of AMQP messages. Declare an exchange on the server. Send a Publishing from the client to an exchange on the server with routing key.</description>
+    </item>
+    
+  </channel>
+</rss>

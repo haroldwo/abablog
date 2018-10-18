@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+
+<!-- 
+Strata by HTML5 UP
+html5up.net | @n33co
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Deploy Ansible With Cobbler. &middot; Fred&#39;s blog</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Fred Wong">
+		<meta name="description" content="Fred&#39;s blog demo">
+		<meta http-equiv="content-language" content="en-us" />
+
+		
+		<meta name="og:site_name" content="Fred&#39;s blog">
+		<meta name="og:title" content="Deploy Ansible With Cobbler.">
+		<meta name="og:url" content="https://haroldwo.github.io/abablog/post/cobbler/">
+		
+		<meta name="og:image" content="https://haroldwo.github.io/abablog/images/avatar.PNG">
+		
+		
+
+		<meta name="generator" content="Hugo 0.48" />
+
+		<!--[if lte IE 8]><script src='https://haroldwo.github.io/abablog/js/ie/html5shiv.js'></script><![endif]-->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://haroldwo.github.io/abablog/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="https://haroldwo.github.io/abablog//css/ie8.css"><![endif]-->
+
+		
+		
+	</head>
+
+	<body id="top">
+		<!-- Header -->
+<header id="header">
+	
+	<a href="https://haroldwo.github.io/abablog/" class="image avatar"><img src="https://haroldwo.github.io/abablog/images/avatar.PNG" alt="" /></a>
+	
+	
+		<h1><strong>Hi! I&rsquo;m Fred Wong,</strong><br> an Open Source technophile.<br> This is my site. Enjoy!</h1>
+	
+
+	
+		<nav id="sidebar">
+			<ul>
+			
+				<li><a href="https://haroldwo.github.io/abablog/">Home</a></li>
+			
+				<li><a href="https://haroldwo.github.io/abablog/post/">Blog</a></li>
+			
+			</ul>
+		</nav>
+	
+</header>
+
+
+		<!-- Main -->
+		<div id="main">
+			
+	<span>
+		<h1>Deploy Ansible With Cobbler.</h1>
+
+		<i class="fa fa-calendar"></i>&nbsp;&nbsp;
+<time datetime="2018-09-25 12:00:00 &#43;0800 &#43;0800">2018-09-25</time>&nbsp;&nbsp;
+
+6 min read&nbsp;&nbsp;
+
+
+    
+    
+        <i class="fa fa-folder"></i>&nbsp;&nbsp;
+        
+        <a class="article-category-link" href="https://haroldwo.github.io/abablog/categories/ops">Ops</a>
+        
+        
+    
+
+
+
+   
+   
+       &nbsp;&nbsp;<i class="fa fa-tags"></i>&nbsp;&nbsp;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/cobbler">cobbler</a>
+       &middot;
+       
+       <a class="article-category-link" href="https://haroldwo.github.io/abablog/tags/ansible">ansible</a>
+       
+       
+   
+
+
+	</span>
+
+	<p>
+	    
+
+<h2 id="1-scenario">1. Scenario.</h2>
+
+<p>How about to use a light application for IaaS. As we all know, the platform like OpenStack is awesome but too heavy. For small business, we always do not create a complex architecture. Since Kubernetes(K8S) appears, we give more scope to it in IaaS. Now, I can use <a href="http://cobbler.github.io/manuals/2.8.0/">Cobbler</a> and Ansible to manage some part of IaaS. They are much simpler than other platform such as OpenStack, Rancher, Vmware and so on, which can also be a good choice.</p>
+
+<p>Please see the picture below for the scope.</p>
+
+<p><a href="https://postimg.cc/5YRyj2Hr"><img src="https://i.postimg.cc/brztCGqq/cobbler03.png" alt="cobbler03.png" /></a></p>
+
+<p>The only thing we need to do is to connect the server to the network and to note the NIC MAC address before using Cobbler to automatically execute OS installation task.</p>
+
+<h2 id="2-install-cobbler">2. Install Cobbler.</h2>
+
+<p>It is <strong>important</strong> that if we have several(n) ISO files to be imported, we should prepare (2 x n x capacity of ISO) free disk space at less for this server.</p>
+
+<p>Here is a simple introduction for Cobbler.</p>
+
+<p><a href="https://postimg.cc/FfRQ1tMd"><img src="https://i.postimg.cc/k5NM1qwc/cobbler02.png" alt="cobbler02.png" /></a></p>
+
+<p><a href="https://postimg.cc/TLKGN8QM"><img src="https://i.postimg.cc/mDwDDBHD/cobbler01.png" alt="cobbler01.png" /></a></p>
+
+<p>I choose yum to install.</p>
+
+<pre><code>sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum -y install cobbler pykickstart fence-agents dhcp xinetd
+</code></pre>
+
+<p>You can search the relevant &ldquo;fence-agents&rdquo; for your server and install &ldquo;debmirrors&rdquo; if you need to import Debian system.</p>
+
+<p>After that, please manually modify the tftp config on <code>/etc/xinetd.d/tftp</code>. Modify &ldquo;disable&rdquo; option from &ldquo;yes&rdquo; to &ldquo;no&rdquo;.</p>
+
+<p>Then, further configuration is as following.</p>
+
+<pre><code># my OS: CentOS Linux release 7.4.1708 (Core)
+# please customize these two var
+pass=$(openssl passwd -1 &quot;redhat&quot;)
+dhcpRange=172.16.0.230 172.16.0.249
+
+# some var got from network config. please check if it works for you.
+localhost=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d &quot;addr:&quot;)
+net=$(echo $localhost | awk 'BEGIN{FS=OFS=&quot;.&quot;}{$NF=0;print}')
+gateway=$(cat /etc/sysconfig/network-scripts/ifcfg-e* | grep GATEWAY | awk -F = '{print $2}')
+dns=$(cat /etc/sysconfig/network-scripts/ifcfg-e* | grep DNS1 | awk -F = '{print $2}')
+
+sudo sed -i '/default_password_crypted/d' /etc/cobbler/settings
+sudo sed -i '/and put the output between the/a\default_password_crypted: &quot;'&quot;$pass&quot;'&quot;' /etc/cobbler/settings
+sudo sed -i 's/server: 127.0.0.1/server: '&quot;$localhost&quot;'/g' /etc/cobbler/settings
+sudo sed -i 's/func_auto_setup: 0/func_auto_setup: 1/g' /etc/cobbler/settings
+sudo sed -i 's/register_new_installs: 0/register_new_installs: 1/g' /etc/cobbler/settings
+sudo sed -i 's/anamon_enabled: 0/anamon_enabled: 1/g' /etc/cobbler/settings
+sudo sed -i 's/subnet 192.168.1.0/subnet '&quot;$net&quot;'/g' /etc/cobbler/dhcp.template
+sudo sed -i 's/option routers             192.168.1.5/option routers             '&quot;$gateway&quot;'/g' /etc/cobbler/dhcp.template
+sudo sed -i 's/option domain-name-servers 192.168.1.1/option domain-name-servers '&quot;$dns&quot;'/g' /etc/cobbler/dhcp.template
+sudo sed -i 's/range dynamic-bootp        192.168.1.100 192.168.1.254/range dynamic-bootp        '&quot;$dhcpRange&quot;'/g' /etc/cobbler/dhcp.template
+sudo setenforce 0
+sudo sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
+cobbler get-loaders
+mkdir -p /usr/share/cobbler/web
+sudo setsebool -P httpd_can_network_connect true
+sudo firewall-cmd --add-service=http
+sudo firewall-cmd --add-port=80/tcp
+sudo firewall-cmd --add-port=69/udp
+sudo firewall-cmd --add-port=51234-51235/tcp
+sudo firewall-cmd --runtime-to-permanent
+sudo systemctl enable cobblerd &amp;&amp;
+sudo systemctl start cobblerd
+sudo systemctl enable httpd &amp;&amp;
+sudo systemctl start httpd
+sudo systemctl enable rsyncd &amp;&amp;
+sudo systemctl start rsyncd
+sudo systemctl enable dhcpd &amp;&amp;
+sudo systemctl start dhcpd
+sudo systemctl enable xinetd &amp;&amp;
+sudo systemctl start xinetd
+cobbler sync
+</code></pre>
+
+<h2 id="3-import-iso">3. Import ISO.</h2>
+
+<p>I downloaded those ISO and create a file formated as <code>/path/to/ISO  isoIndex</code>. This is my example.</p>
+
+<pre><code>~/CentOS-7-x86_64-DVD-1708.iso   CentOS-7-x86_64
+~/CentOS-6-x86_64-DVD.iso    CentOS-6-x86_64
+</code></pre>
+
+<p>Then, import ISO to Cobbler.</p>
+
+<pre><code># please customize the first var with the file we just created.
+isoList=/path/to/file
+maxLine=$(cat $isoList | wc -l)
+
+for ((line = 1; $line &lt;= $maxLine; line++)); do
+  isoName=$(head -n $line $isoList | awk '{print $1}');
+  cobblerISO=$(head -n $line $isoList | awk '{print $2}');
+  mkdir /mnt/$cobblerISO
+  mount -t iso9660 -o loop,ro $isoName /mnt/$cobblerISO;
+  cobbler import --name=$cobblerISO --path=/mnt/$cobblerISO;
+done
+cobbler distro list
+# show the ISO list
+</code></pre>
+
+<h2 id="4-deploy-ansible">4. Deploy Ansible.</h2>
+
+<p>After we note the NIC MAC address of the server, we need to configure some parameters for the installation. You can customize these info. Please read the <a href="http://cobbler.github.io/manuals/2.8.0/3/1/3_-_Systems.html">manual</a> first.</p>
+
+<pre><code>cobbler system add --name=ansible --profile=CentOS-7-x86_64
+cobbler system edit --name=ansible --interface=ens33 --mac=00:50:56:3D:16:32 \
+--ip-address=172.16.0.12 --netmask=255.255.255.0 --static=1 --dns-name=ansible.mydomain.com \
+--name-servers=172.16.0.253 --kickstart=/var/lib/cobbler/kickstarts/ansible.ks \
+--if-gateway=172.16.0.253 --hostname=ansible
+</code></pre>
+
+<p>Then, please create a file which involving the packages you want to install. I will call this file with some command in kickstart. This is the example.</p>
+
+<pre><code>@base
+@compat-libraries
+@debugging
+@development
+net-tools
+zip
+unzip
+bzip2
+tree
+psmisc
+wget
+gcc
+gcc-c++
+openssl
+openssl-devel
+zlib
+zlib-devel
+sysstat
+</code></pre>
+
+<p>Please create a script file located in any folder of <code>/var/www/cobbler/</code> which will be used to deploy Ansible. This is because I used some command in kickstart to call this script from the target server. I put it on <code>/var/www/cobbler/pub/ansible.sh</code>. This script is for your reference.</p>
+
+<pre><code>ansible_pass=admin
+ansible_account=admin
+
+wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate
+python get-pip.py
+pip install http://github.com/diyan/pywinrm/archive/master.zip#egg=pywinrm
+pip install --upgrade pip
+pip install pyvmomi # just for VMware
+
+yum -y install epel-release
+yum -y install ansible
+useradd $ansible_account
+echo &quot;$ansible_pass&quot; | passwd $ansible_account --stdin
+echo &quot;$ansible_account ALL=(ALL) NOPASSWD: ALL&quot; &gt;&gt; /etc/sudoers
+echo &quot;StrictHostKeyChecking no&quot; &gt;&gt; /etc/ssh/ssh_config
+runuser -l $ansible_account -c 'ssh-keygen -f ~/.ssh/id_rsa -N &quot;&quot;'
+</code></pre>
+
+<p>The Snippets feature is useful for the <a href="http://cobbler.github.io/manuals/2.8.0/3/5_-_Kickstart_Templating.html">kickstart template</a>. I have configured some feature about it in the former script you may have noticed. Then I will create an ansible kickstart template from a standard template. Please see the script.</p>
+
+<pre><code># please customize the packages file path, script name and kickstart name.
+packages=$(sed ':a;N;s/\n/\\n/g;ba' /path/to/file)
+script=&quot;ansible.sh&quot;
+kickstart=ansible.ks
+localhost=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d &quot;addr:&quot;)
+
+sudo sed -i 's%America/New_York%Asia/Shanghai%g' /var/lib/cobbler/kickstarts/sample_end.ks
+cp /var/lib/cobbler/kickstarts/sample_end.ks /var/lib/cobbler/kickstarts/$kickstart
+sudo sed -i &quot;s/^func/$packages/g&quot; /var/lib/cobbler/snippets/func_install_if_enabled
+sudo sed -i &quot;/boot notification/i\systemctl set-default multi-user.target&quot; /var/lib/cobbler/kickstarts/$kickstart
+sudo sed -i &quot;/boot notification/i\wget http:\/\/$localhost\/cobbler\/pub\/$script&quot; /var/lib/cobbler/kickstarts/$kickstart
+sudo sed -i &quot;/boot notification/i\chmod a+x $script&quot; /var/lib/cobbler/kickstarts/$kickstart
+sudo sed -i &quot;/boot notification/i\. $script&quot; /var/lib/cobbler/kickstarts/$kickstart
+cobbler validateks /var/lib/cobbler/kickstarts/$kickstart
+# validate kickstart
+
+cobbler sync
+</code></pre>
+
+<p>After start the server, we will see the installation.</p>
+
+<h2 id="5-deploy-regular-server">5. Deploy regular server.</h2>
+
+<p>Now, I will deploy a regular server with &ldquo;id_rsa.pub&rdquo; which generate by Ansible server so that I can add nodes in Ansible controller.</p>
+
+<ol>
+<li><p>Put public key on the http server. <code>scp $ansible_account@172.16.0.12:/home/$ansible_account/.ssh/id_rsa.pub /var/www/cobbler/pub</code></p></li>
+
+<li><p>Reuse the deploy script with customized info such as &ldquo;script=regular.sh, kickstart=regular.ks&rdquo;. Create the script we described and put it on <code>/var/www/cobbler/pub/regular.sh</code>.</p></li>
+</ol>
+
+<pre><code>ansible_pass=admin
+ansible_account=admin
+ansible_key=http://172.16.0.10/cobbler/pub/id_rsa.pub
+
+useradd $ansible_account
+echo &quot;$ansible_pass&quot; | passwd $ansible_account --stdin
+echo &quot;$ansible_account ALL=(ALL) NOPASSWD: ALL&quot; &gt;&gt; /etc/sudoers
+echo &quot;StrictHostKeyChecking no&quot; &gt;&gt; /etc/ssh/ssh_config
+runuser -l $ansible_account -c &quot;wget $ansible_key -P /home/$ansible_account/&quot;
+runuser -l $ansible_account -c &quot;mkdir -p /home/$ansible_account/.ssh&quot;
+runuser -l $ansible_account -c &quot;cat /home/$ansible_account/id_rsa.pub &gt;&gt; /home/$ansible_account/.ssh/authorized_keys&quot;
+runuser -l $ansible_account -c &quot;chmod 700 /home/$ansible_account/.ssh&quot;
+runuser -l $ansible_account -c &quot;chmod 600 /home/$ansible_account/.ssh/authorized_keys&quot;
+</code></pre>
+
+<ol>
+<li>Add the system in cobbler. You can set more for concurrency. The one below is for your reference.</li>
+</ol>
+
+<pre><code>cobbler system add --name=regular01 --profile=CentOS-7-x86_64
+cobbler system edit --name=regular01 --interface=ens33 --mac=00:50:56:3A:0B:46 \
+--ip-address=172.16.0.13 --netmask=255.255.255.0 --static=1 --dns-name=redis01.mydomain.com \
+--name-servers=172.16.0.253 --kickstart=/var/lib/cobbler/kickstarts/regular.ks \
+--if-gateway=172.16.0.253 --hostname=redis01
+cobbler sync
+</code></pre>
+
+<p>We can add every node in Ansible conveniently in the future after regular OS installation.</p>
+
+<h2 id="6-reinstall">6. Reinstall.</h2>
+
+<p>We can use PXE to reinstall or <a href="http://cobbler.github.io/manuals/2.8.0/6_-_Koan.html">Koan</a> for re-installation.</p>
+
+<pre><code># please customize the info
+yum -y install epel-release
+yum -y install koan
+koan --server=cobbler.mydomain.org --display --system=name
+koan --server=cobbler.mydomain.org --replace-self --system=name
+reboot
+</code></pre>
+
+<p><a href="http://cobbler.github.io/manuals/2.8.0/4/8_-_Auto-Registration.html">Auto-Registration</a> is useful when using koan for Cobbler.</p>
+
+<p>Thank you for your reading.</p>
+
+	</p>
+
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "haroldwo" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+		</div>
+
+		<!-- Footer -->
+<footer id="footer">
+	<ul class="icons">
+		
+		
+		
+		
+		<li><a href="//github.com/haroldwo" target="_blank" class="icon fa-github"><span class="label">GitHub</span></a></li>
+		
+		
+		
+		<li><a href="//linkedin.com/in/fredwo" target="_blank" class="icon fa-linkedin-square"><span class="label">Linkedin</span></a></li>
+		
+		
+		
+		
+		<li><a href="https://haroldwo.github.io/abablog/#contact-form" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+		
+		
+		<li><a href="https://haroldwo.github.io/abablog/index.xml" class="icon fa-rss" type="application/rss+xml"><span class="label">RSS</span></a></li>
+		
+	</ul>
+
+	<ul class="copyright">
+		
+		<li>&copy; John Doe</li>
+		
+		<li>Design: <a href="//html5up.net">HTML5 UP</a></li>
+		
+		<li>Images: <a href="//unsplash.com/">Unsplash</a></li>
+		
+	</ul>
+</footer>
+
+<!-- Scripts -->
+<script src="https://haroldwo.github.io/abablog/js/jquery.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/jquery.poptrox.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/skel.min.js"></script>
+<script src="https://haroldwo.github.io/abablog/js/util.js"></script>
+
+<script src="https://haroldwo.github.io/abablog/js/main.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-125977378-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+	</body>
+</html>

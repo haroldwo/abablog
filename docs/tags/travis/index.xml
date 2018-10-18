@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Travis on Fred&#39;s blog</title>
+    <link>https://haroldwo.github.io/abablog/tags/travis/</link>
+    <description>Recent content in Travis on Fred&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Sep 2018 12:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://haroldwo.github.io/abablog/tags/travis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Make Blog Posting as a Simple Continuous Delivery.</title>
+      <link>https://haroldwo.github.io/abablog/post/blog-ci/</link>
+      <pubDate>Wed, 19 Sep 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://haroldwo.github.io/abablog/post/blog-ci/</guid>
+      <description>1. Continuous Delivery. What is CD? Please look into Wiki CD. We can see our blog posting as a delivery every time we push our repo to GitHub, which can be used as CI/CD process. Well, Let me describe it simpler. Do you remember that I need to run hugo -d ./docs each time I doing my posting? This command means generating code from your local repo by Hugo. Only &amp;ldquo;docs&amp;rdquo; directory will be used as your website.</description>
+    </item>
+    
+  </channel>
+</rss>
